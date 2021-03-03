@@ -1,0 +1,145 @@
+.Parameters {
+    width: 50%;
+    margin: 2rem auto;
+    border: 1px solid #dfdfdf;
+    box-shadow: 0 2px 6px -3px rgba(60, 60, 60, .4);
+    padding: 0;
+    box-sizing: border-box;
+    color: #424242;
+}
+
+.Parameters h4 {
+    text-align: left;
+}
+
+.Parameters table {
+    width: 100%;
+}
+
+.Parameters table,
+.Parameters th,
+.Parameters td {
+    border: 1px solid #dfdfdf;
+    border-collapse: collapse;
+}
+
+.Parameters th {
+    background-color: #dfdfdf;
+    color: #424242;
+    padding: .25rem;
+    font-size: 14px;
+}
+
+.Parameters td {
+    outline: none;
+    padding: 0;
+}
+
+.Parameters input {
+    border: none;
+    outline: none;
+    text-align: left;
+    width: 100%;
+    padding: .5rem .75rem;
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.Parameters .Active input:focus {
+    background-color: #fafafa;
+    border-color: #757575;
+}
+
+.Parameters .Trash {
+    color: #a5a5a5;
+    width: 100%;
+    height: 100%;
+    padding: .25rem;
+}
+
+.Parameters .Trash:hover {
+    transition: all .1s ease-out;
+    color: red;
+}
+
+.Parameters .Trash svg {
+    font-size: 1rem;
+}
+
+.Parameters .Plus {
+    color: forestgreen;
+    height: 2rem;
+    width: 2rem;
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+}
+
+.Parameters .Plus:hover {
+    box-shadow: 0 2px 4px rgba(60, 60, 60, .4);
+    transition: all .15s ease-out;
+}
+
+.Check {
+    width: 2rem;
+    text-align: center;
+}
+
+.Parameters button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.Parameters input[type="checkbox"] {
+    width: 100%;
+    height: .875rem;
+    margin: 0;
+    border-radius: 0;
+}
+
+.Parameters .Active {
+    background-color: #ffffff;
+}
+
+.Parameters .Inactive {
+    background-color: #f2f2f2;
+}
+
+.Parameters .Header {
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem;
+    box-sizing: content-box;
+}
+
+.Parameters .Body {
+    padding: 1rem;
+}
+
+@media (max-width: 800px) {
+    .Parameters {
+        width: 85%;
+    }
+}
+
+@media (max-width: 600px) {
+    .Parameters {
+        width: 90%;
+    }
+}
+
+@media (max-width: 400px) {
+    .Parameters {
+        width: 95%;
+        margin: .5rem auto;
+    }
+
+    .Parameters input {
+        padding: .25rem .125rem;
+    }
+}
