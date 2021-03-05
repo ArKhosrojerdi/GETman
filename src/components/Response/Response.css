@@ -11,28 +11,36 @@
 .Response {
   font-family: "Courier", sans-serif;
   margin: 0;
+  display: block;
 }
 
 .Response .Key {
+  color: #01579b;
+}
+
+.Response .String {
   color: #a34200;
 }
 
-.Response .Number,
-.Response .Boolean,
-.Response .String,
-.Response .Value {
-  color: #283593;
+.Response .Boolean {
+  color: #7b1fa2;
+}
+
+.Response .Number {
+  color: #388e3c;
 }
 
 .Response .Null {
-  color: darkorange;
+  color: #f57c00;
 }
 
 .Response li {
   text-align: left;
   background-color: #fafafa;
+  color: #424242;
   margin: .25rem 0 .25rem .25rem;
   padding: .25rem;
+  word-break: break-word;
 }
 
 .Success {

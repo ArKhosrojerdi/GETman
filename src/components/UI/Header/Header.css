@@ -11,7 +11,11 @@
 }
 
 .Header .Logo {
-  font-family: "RocknRoll One", sans-serif;
+  height: 2.5rem;
+}
+
+.Header .Logo img {
+  height: 2.5rem;
 }
 
 .Header .Container {
@@ -109,5 +113,10 @@
   
   .Header .Container {
     width: 95%;
+  }
+  
+  .Header .Logo,
+  .Header .Logo img {
+    height: 2rem;
   }
 }
