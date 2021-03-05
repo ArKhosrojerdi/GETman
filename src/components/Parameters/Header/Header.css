@@ -1,0 +1,51 @@
+.Header {
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem;
+    height: 3.5rem;
+    box-sizing: border-box;
+}
+
+.Header .Plus {
+    color: forestgreen;
+    height: 2rem;
+    width: 2rem;
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+    border: 1px solid forestgreen;
+}
+
+.Header .Plus:hover {
+    box-shadow: 0 2px 4px rgba(34, 139, 34, .4);
+    border: 1px solid transparent;
+    transition: all .15s ease-out;
+}
+
+.Header .Plus:active {
+    box-shadow: inset 0 1px 2px rgba(60, 60, 60, .4);
+}
+
+@media (max-width: 575.98px) {
+    .Header {
+        height: 2.5rem;
+        padding: .5rem;
+    }
+
+    .Header h4 {
+        font-size: 14px;
+    }
+
+    .Header .Plus {
+        padding: 0;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .Header .Plus:hover {
+        height: 1.5rem;
+        width: 1.5rem;
+        box-shadow: inset 0 1px 2px rgba(60, 60, 60, .4);
+    }
+}

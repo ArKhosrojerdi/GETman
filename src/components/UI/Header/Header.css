@@ -1,109 +1,113 @@
 .Header {
-    font-size: 1.75rem;
-    padding: .625rem 0;
-    background-color: #efefef;
-    color: #424242;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px -4px rgba(60, 60, 60, .4);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  font-size: 1.75rem;
+  padding: .625rem 0;
+  background-color: #efefef;
+  color: #424242;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px 1px rgba(60, 60, 60, .2);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .Header .Logo {
-    font-family: "RocknRoll One", sans-serif;
+  font-family: "RocknRoll One", sans-serif;
 }
 
 .Header .Container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 50%;
 }
 
 .Header .Links {
-    list-style: none;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    text-decoration: none;
+  list-style: none;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
 }
 
 .Header .Links button {
-    margin: auto 0 auto .5rem;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    width: 5rem;
-    font-size: 16px;
-    background-color: transparent;
-    color: #757575;
-    height: 2.25rem;
-    box-sizing: border-box;
-    display: block;
+  margin: auto 0 auto .5rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  width: 5rem;
+  font-size: 16px;
+  background-color: transparent;
+  color: #757575;
+  height: 2.25rem;
+  box-sizing: border-box;
+  display: block;
 }
 
 .Header .Links button:hover {
-    transition: all .15s ease-out;
-    color: #424242;
-    box-shadow: 0 1px 4px rgba(60, 60, 60, .4);
+  transition: all .15s ease-out;
+  color: #424242;
+  box-shadow: 0 1px 4px rgba(60, 60, 60, .4);
 }
 
 .Header .Links button.Active {
-    color: #424242;
-    background-color: #ffffff;
-    box-shadow: 0 1px 4px rgba(60, 60, 60, .4) inset;
-    cursor: default;
+  color: #424242;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(60, 60, 60, .4) inset;
+  cursor: default;
 }
 
 .Header .Links button:active {
-    color: #424242;
-    background-color: #ffffff;
-    box-shadow: 0 1px 4px rgba(60, 60, 60, .4) inset;
+  color: #424242;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(60, 60, 60, .4) inset;
 }
 
-@media only screen and  (max-width: 800px) {
-    .Header .Container {
-        width: 85%;
-    }
+@media only screen and  (max-width: 991.98px) {
+  .Header .Container {
+    width: 85%;
+  }
 }
 
-@media only screen and  (max-width: 600px) {
-    .Header {
-        font-size: 1.25rem;
-    }
-
-    .Header .Links button {
-        font-size: 14px;
-        height: 2rem;
-        width: 4rem;
-    }
-
-    .Header .Container {
-        width: 90%;
-    }
+@media only screen and  (max-width: 767.98px) {
+  .Header {
+    font-size: 1.25rem;
+    margin-bottom: .75rem;
+    box-shadow: 0 4px 4px rgba(60, 60, 60, .2);
+  }
+  
+  .Header .Links button {
+    font-size: 14px;
+    height: 2rem;
+    width: 4rem;
+  }
+  
+  .Header .Container {
+    width: 90%;
+  }
 }
 
-@media only screen and (max-width: 400px) {
-    .Header {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .Header .Links button {
-        font-size: 12px;
-        padding: 0;
-        height: 2rem;
-        width: 4rem;
-    }
-
-    .Header .Container {
-        width: 95%;
-    }
+@media only screen and (max-width: 575.98px) {
+  .Header {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px 1px rgba(60, 60, 60, .2);
+    width: 100%;
+  }
+  
+  .Header .Links button {
+    font-size: 12px;
+    padding: 0;
+    height: 2rem;
+    width: 4rem;
+  }
+  
+  .Header .Container {
+    width: 95%;
+  }
 }

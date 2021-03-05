@@ -1,12 +1,11 @@
 import React from "react";
 
 import classes from "./Parameters.css";
+import Header from "./Header/Header";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from '@fortawesome/fontawesome-free-solid';
-import {faPlus} from '@fortawesome/fontawesome-free-solid';
 import {faMinus} from '@fortawesome/fontawesome-free-solid';
-
 
 const Parameters = (props) => {
   let params = (
@@ -22,9 +21,25 @@ const Parameters = (props) => {
       <tbody>
       {props.params.map((param) => (
         <tr key={param.id} className={param.check ? classes.Active : classes.Inactive}>
-          <td><input type="checkbox" onChange={() => props.check(param.id)} checked={param.check}/></td>
-          <td><input value={param.key} onChange={(event) => props.change(event, param.id, 0)}/></td>
-          <td><input value={param.value} onChange={(event) => props.change(event, param.id, 1)}/></td>
+          <td>
+            <input
+              type="checkbox"
+              onChange={() => props.check(param.id)} checked={param.check}/>
+          </td>
+          <td>
+            <input
+              value={param.key}
+              onChange={(event) => props.change(event, param.id, 0)}
+              disabled={!param.check}
+            />
+          </td>
+          <td>
+            <input
+              value={param.value}
+              onChange={(event) => props.change(event, param.id, 1)}
+              disabled={!param.check}
+            />
+          </td>
           <td>
             <button className={classes.Trash}
                     onClick={() => props.remove(param.id)}>
@@ -39,12 +54,7 @@ const Parameters = (props) => {
 
   return (
     <div className={classes.Parameters}>
-      <div className={classes.Header}>
-        <h4>Parameters</h4>
-        <h6>
-          <button className={classes.Plus} onClick={props.add}><FontAwesomeIcon icon={faPlus}/></button>
-        </h6>
-      </div>
+      <Header add={props.add}/>
       <div className={classes.Body}>
         {params}
       </div>

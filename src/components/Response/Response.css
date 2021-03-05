@@ -1,73 +1,79 @@
 .ResponseBox {
-    margin: 2rem auto;
-    border: 1px solid #dfdfdf;
-    width: 50%;
-    box-sizing: border-box;
-    text-align: left;
-    color: #424242;
-    box-shadow: 0 2px 6px -3px rgba(60, 60, 60, .4);
+  margin: 2rem auto;
+  border: 1px solid #dfdfdf;
+  width: 50%;
+  box-sizing: border-box;
+  text-align: left;
+  color: #424242;
+  box-shadow: 0 2px 6px -3px rgba(60, 60, 60, .4);
 }
 
 .Response {
-    font-family: "Courier", sans-serif;
-    margin: 0;
+  font-family: "Courier", sans-serif;
+  margin: 0;
+}
+
+.Response .Key {
+  color: #a34200;
+}
+
+.Response .Number,
+.Response .Boolean,
+.Response .String,
+.Response .Value {
+  color: #283593;
+}
+
+.Response .Null {
+  color: darkorange;
 }
 
 .Response li {
-    text-align: left;
-    background-color: #fafafa;
-    margin: .25rem 0 .25rem .25rem;
-    padding: .25rem;
-}
-
-.Key {
-    color: #a34200;
-}
-
-.Value {
-    color: #283593;
+  text-align: left;
+  background-color: #fafafa;
+  margin: .25rem 0 .25rem .25rem;
+  padding: .25rem;
 }
 
 .Success {
-    color: forestgreen;
+  color: forestgreen;
 }
 
 .Fail {
-    color: firebrick;
+  color: firebrick;
 }
 
 h6 {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .Body {
-    padding: 1rem;
-    /*border: 1px solid #dfdfdf;*/
-    border-top: none;
+  padding: .75rem;
+  border-top: none;
 }
 
 .Body p {
-    background-color: #fafafa;
-    padding: .5rem;
-    margin: 0;
+  background-color: #fafafa;
+  padding: .5rem;
+  margin: 0;
 }
 
-@media only screen and  (max-width: 800px) {
-    .ResponseBox {
-        width: 85%;
-    }
+@media only screen and  (max-width: 991.98px) {
+  .ResponseBox {
+    width: 85%;
+  }
 }
 
-@media only screen and  (max-width: 600px) {
-    .ResponseBox {
-        width: 90%;
-        margin: 1rem auto;
-    }
+@media only screen and  (max-width: 767.98px) {
+  .ResponseBox {
+    width: 90%;
+    margin: 1rem auto;
+  }
 }
 
-@media only screen and (max-width: 400px) {
-    .ResponseBox {
-        width: 95%;
-        margin: .5rem auto;
-    }
+@media only screen and (max-width: 575.98px) {
+  .ResponseBox {
+    width: 95%;
+    margin: .5rem auto;
+  }
 }

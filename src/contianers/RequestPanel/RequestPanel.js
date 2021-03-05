@@ -8,7 +8,7 @@ import axios from "axios";
 
 class RequestPanel extends React.Component {
   state = {
-    URL: "https://jsonplaceholder.typicode.com/posts/1",
+    URL: "https://jsonplaceholder.typicode.com/posts",
     methods: ["GET", "POST"],
     method: "",
     response: {},
