@@ -5,11 +5,10 @@
   justify-content: center;
   height: 3.5rem;
   color: #424242;
-  width: 50%;
-  margin: 0 auto;
   border: 1px solid #dfdfdf;
   padding: .5rem;
   box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(60,60,60,.2);
 }
 
 .AddressBar select {
@@ -54,9 +53,9 @@
 .AddressBar button {
   cursor: pointer;
   outline: none;
-  color: forestgreen;
+  color: #43a047;
   height: 100%;
-  border: 1px solid #228b22;
+  border: 1px solid #43a047;
   box-sizing: border-box;
   padding: 0 .75rem;
   background-color: transparent;
@@ -82,26 +81,13 @@
 .AddressBar button:hover {
   transition: all .15s ease-out;
   border: 1px solid transparent;
-  box-shadow: 0 2px 4px rgba(34, 139, 34, .4);
-}
-
-@media only screen and (max-width: 991.98px) {
-  .AddressBar {
-    width: 85%;
-  }
-}
-
-@media only screen and (max-width: 767.98px) {
-  .AddressBar {
-    width: 90%;
-    margin: .75rem auto;
-  }
+  box-shadow: 0 2px 4px rgba(66, 66, 66, .4);
+  background-color: #43a047;
+  color: #ffffff;
 }
 
 @media only screen and (max-width: 575.98px) {
   .AddressBar {
-    width: 95%;
-    margin: .5rem auto;
     flex-direction: column;
     justify-content: center;
     height: auto;

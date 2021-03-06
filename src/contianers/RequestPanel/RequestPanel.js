@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Aux from "../../hoc/Aux/Aux";
+import classes from "./RequestPanel.css";
 import AddressBar from "../../components/AddressBar/AddressBar";
-import Response from "../../components/Response/Response";
+import Response from "../Response/Response";
 import Parameters from "../../components/Parameters/Parameters";
 import axios from "axios";
 
@@ -51,22 +51,34 @@ class RequestPanel extends React.Component {
             response: resp,
             status: response.status,
             statusText: response.statusText,
-            used: true,
             resTime: responseTime
           });
+          if (!this.state.used) {
+            this.setState({
+              tab: this.state.navbar[0],
+              used: true
+            });
+          }
         })
         .catch(error => this.setState({response: error}));
     } else if (this.state.method === this.state.methods[1]) {
       axios.post(this.state.URL)
         .then((response) => {
-          // const responseTime = Date.now() - startTime;
-          // this.setState({
-          //   response: resp,
-          //   status: response.status,
-          //   statusText: response.statusText,
-          //   used: true,
-          //   resTime: responseTime
-          // });
+          const responseTime = Date.now() - startTime;
+          this.setState({
+            response: response,
+            status: response.status,
+            statusText: response.statusText,
+            used: true,
+            resTime: responseTime
+          });
+
+          if (!this.state.used) {
+            this.setState({
+              tab: this.state.navbar[0],
+              used: true
+            });
+          }
           // console.log(response);
         })
         .catch(error => this.setState({response: error}));
@@ -140,7 +152,7 @@ class RequestPanel extends React.Component {
   }
 
   changeTabHandler = (item) => {
-    this.setState({tab: item});
+    this.setState({tab: item, used: true});
   }
 
   render() {
@@ -160,7 +172,7 @@ class RequestPanel extends React.Component {
     // }
 
     return (
-      <Aux>
+      <div className={classes.RequestPanel}>
         <AddressBar
           url={this.state.URL}
           urlHandler={this.changeURLHandler}
@@ -174,7 +186,7 @@ class RequestPanel extends React.Component {
           add={this.addParamHandler}
           check={this.checkboxHandler}/>
         {responseBody}
-      </Aux>
+      </div>
     )
   }
 }

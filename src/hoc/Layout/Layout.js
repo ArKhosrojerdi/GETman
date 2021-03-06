@@ -1,10 +1,10 @@
 import React from 'react';
+import {Route} from "react-router";
 
 import Aux from '../Aux/Aux';
 import Header from "../../components/UI/Header/Header";
-import classes from './Layout.css';
+import Settings from "../../contianers/Settings/Settings";
 import RequestPanel from "../../contianers/RequestPanel/RequestPanel";
-import {Route} from "react-router";
 
 class Layout extends React.Component {
   render() {
@@ -12,12 +12,7 @@ class Layout extends React.Component {
       <Aux>
         <Header/>
         <Route path="/" exact component={RequestPanel}/>
-
-        <Route path="/settings">
-          <div className={classes.Content}>
-            {this.props.children}
-          </div>
-        </Route>
+        <Route path="/settings" component={Settings}/>
       </Aux>
     )
   }

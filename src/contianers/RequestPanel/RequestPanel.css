@@ -1,0 +1,28 @@
+.RequestPanel {
+  width: 50%;
+  margin: 0 auto 1rem;
+  display: grid;
+  grid-row-gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media only screen and (max-width: 991.98px) {
+  .RequestPanel {
+    width: 85%;
+    grid-row-gap: 1.75rem;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .RequestPanel {
+    width: 90%;
+    grid-row-gap: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 575.98px) {
+  .RequestPanel {
+    width: 95%;
+    grid-row-gap: 1rem;
+  }
+}
