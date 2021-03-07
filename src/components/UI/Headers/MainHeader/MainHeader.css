@@ -1,19 +1,13 @@
 .Header {
   font-size: 1.75rem;
   padding: .625rem 0;
-  background-color: #efefef;
-  color: #424242;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 6px 1px rgba(60, 60, 60, .2);
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.Header .Logo {
-  height: 2.5rem;
-}
-
+.Header .Logo,
 .Header .Logo img {
   height: 2.5rem;
 }
@@ -47,7 +41,6 @@
   width: 5rem;
   font-size: 16px;
   background-color: transparent;
-  color: #757575;
   height: 2.25rem;
   box-sizing: border-box;
   display: block;
@@ -55,21 +48,6 @@
 
 .Header .Links button:hover {
   transition: all .15s ease-out;
-  color: #424242;
-  box-shadow: 0 1px 4px rgba(60, 60, 60, .4);
-}
-
-.Header .Links button.Active {
-  color: #424242;
-  background-color: #ffffff;
-  box-shadow: 0 1px 4px rgba(60, 60, 60, .4) inset;
-  cursor: default;
-}
-
-.Header .Links button:active {
-  color: #424242;
-  background-color: #ffffff;
-  box-shadow: 0 1px 4px rgba(60, 60, 60, .4) inset;
 }
 
 @media only screen and  (max-width: 991.98px) {

@@ -1,0 +1,36 @@
+.Header .Save {
+  cursor: pointer;
+  outline: none;
+  color: #0d47a1;
+  border: 1px solid #0d47a1;
+  height: 2rem;
+  box-sizing: border-box;
+  padding: 0 .75rem;
+  font-size: 16px;
+}
+
+.Header .Save:hover {
+  transition: all .15s ease-out;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(66, 66, 66, .2);
+  background-color: #0d47a1;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .Header {
+    height: 2.5rem;
+    padding: .5rem;
+  }
+  
+  .Header h4 {
+    font-size: 14px;
+  }
+  
+  .Header .Status {
+    font-size: 12px;
+  }
+  
+  .Header .Status h6 {
+    margin-left: .5rem !important;
+  }
+}

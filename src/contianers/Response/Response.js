@@ -6,6 +6,10 @@ import classes from "./Response.css";
 import Tabs from "../../components/Response/Tabs/Tabs";
 import Header from "../../components/Response/Header/Header";
 import Row from "../../components/Response/Row/Row";
+import ParametersHeader from "../../components/UI/Headers/Header/Header";
+import * as Theme from "../../components/UI/Theme/Theme";
+import styled from "styled-components";
+import {connect} from "react-redux";
 
 class Response extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -155,10 +159,33 @@ class Response extends React.Component {
 
   render() {
     let response, element = [];
-    let resObj = JSON.stringify(this.props.responseObj, undefined, 4);
+    let resObj = JSON.stringify(this.props.responseObj, undefined, this.props.indent);
     let synHighlighted = this.syntaxHighlight(resObj);
     synHighlighted = synHighlighted.split("\n");
     element = this.printObj(synHighlighted, element);
+
+    const theme = Theme.themes[this.props.theme];
+    const Div = styled.div`
+      border: 1px solid ${theme.border};
+      color: ${theme.text1};
+      box-shadow: ${theme.shadowLight};
+    `;
+
+    const Main = styled.main`
+      background-color: ${theme.bg2};
+      
+        // & p {
+        //   background-color: ${theme.bg2};
+        // }
+        
+        & > div {
+          background-color: ${theme.bg2};
+        }
+        
+        & li {
+          background-color: ${theme.bg1};
+        }
+    `;
 
     if (this.props.used) {
       if (this.props.tab === "preview") {
@@ -179,7 +206,7 @@ class Response extends React.Component {
     }
 
     return (
-      <div className={classes.ResponseBox}>
+      <Div className={classes.ResponseBox}>
         <Header
           status={this.props.status}
           statusText={this.props.statusText}
@@ -188,12 +215,19 @@ class Response extends React.Component {
           navigation={this.props.nav}
           tab={this.props.tab}
           change={this.props.change}/>
-        <div className={classes.Body}>
+        <Main className={classes.Body}>
           {this.props.used ? response : ""}
-        </div>
-      </div>
+        </Main>
+      </Div>
     )
   }
 }
 
-export default Response;
+const mapStateToProps = state => {
+  return {
+    indent: state.indent,
+    theme: state.theme
+  };
+}
+
+export default connect(mapStateToProps)(Response);

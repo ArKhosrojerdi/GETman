@@ -1,3 +1,48 @@
 .Settings {
   text-align: center;
+  width: 50%;
+  margin: auto;
 }
+
+.Settings label {
+  margin-right: 1rem;
+}
+
+.Settings .Indent input {
+  outline: none;
+  caret-color: #757575;
+  padding: .5rem .25rem;
+}
+
+.Settings .Theme select {
+  cursor: pointer;
+  outline: none;
+  padding: .5rem .25rem;
+}
+
+.Settings .Row {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.Settings .Body {
+  text-align: left;
+  padding: .75rem;
+  display: grid;
+  grid-row-gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.Settings input,
+.Settings select {
+  width: 4rem;
+  box-sizing: border-box;
+  border: 1px solid #dfdfdf;
+  text-transform: capitalize;
+}
+
+.Settings input:focus,
+.Settings select:focus {
+  border-color: #a5a5a5;
+}
+

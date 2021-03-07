@@ -1,12 +1,12 @@
-.Header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f2f2f2;
-  padding: .75rem;
-  height: 3.5rem;
-  box-sizing: border-box;
-}
+/*.Header {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*  background-color: #f2f2f2;*/
+/*  padding: .75rem;*/
+/*  height: 3.5rem;*/
+/*  box-sizing: border-box;*/
+/*}*/
 
 .Success {
   color: #388e3c;
@@ -16,13 +16,13 @@
   color: firebrick;
 }
 
-.Header .Status {
+.Status {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.Header .Status h6 {
+.Status h6 {
   margin-left: 1rem !important;
 }
 

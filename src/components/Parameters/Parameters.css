@@ -1,17 +1,15 @@
 .Parameters {
   width: 100%;
-  border: 1px solid #dfdfdf;
-  box-shadow: 0 2px 6px -3px rgba(60, 60, 60, .4);
+  /*border: 1px solid #dfdfdf;*/
+  /*box-shadow: 0 2px 6px -3px rgba(60, 60, 60, .4);*/
   padding: 0;
   box-sizing: border-box;
-  color: #424242;
 }
 
 .Parameters .Body {
   z-index: 100;
   padding: .75rem;
   overflow-x: scroll;
-  box-shadow: inset -16px 0 20px 4px rgba(255, 255, 255, 1);
 }
 
 .Parameters table {
@@ -25,13 +23,12 @@
 
 .Parameters th,
 .Parameters td {
-  border: 1px solid #dfdfdf;
   border-collapse: collapse;
 }
 
 .Parameters th {
-  background-color: #dfdfdf;
-  color: #424242;
+  /*background-color: #dfdfdf;*/
+  /*color: #424242;*/
   padding: .25rem;
   font-size: 14px;
 }
@@ -48,7 +45,7 @@
   width: 100%;
   padding: .5rem .75rem;
   box-sizing: border-box;
-  background-color: transparent;
+  /*background-color: transparent;*/
   border-radius: 0;
   box-shadow: none;
 }
@@ -58,8 +55,8 @@
 }
 
 .Parameters .Active input:focus {
-  background-color: #fafafa;
-  border-color: #757575;
+  /*background-color: #fafafa;*/
+  /*border-color: #757575;*/
 }
 
 .Parameters .Trash {
@@ -99,14 +96,6 @@
   height: .875rem;
   margin: 0;
   border-radius: 0;
-}
-
-.Parameters .Active {
-  background-color: #ffffff;
-}
-
-.Parameters .Inactive {
-  background-color: #f2f2f2;
 }
 
 @media (max-width: 575.98px) {

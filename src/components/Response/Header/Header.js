@@ -1,8 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+import {connect} from "react-redux";
+import ResponseHeader from "../../UI/Headers/Header/Header";
+
+import * as Theme from "../../UI/Theme/Theme";
 
 import classes from "./Header.css";
 
 const Header = (props) => {
+  const theme = Theme.themes[props.theme];
+
   let status;
   if (props.status === 200) {
     status = (<span className={classes.Success}>{props.status} OK</span>)
@@ -11,7 +18,7 @@ const Header = (props) => {
   }
 
   return (
-    <div className={classes.Header}>
+    <ResponseHeader>
       <h4>Response</h4>
       <div className={classes.Status}>
         <h6>
@@ -20,8 +27,14 @@ const Header = (props) => {
         </h6>
         <h6>Time: {props.time}ms</h6>
       </div>
-    </div>
+    </ResponseHeader>
   )
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    theme: state.theme
+  };
+}
+
+export default connect(mapStateToProps)(Header);

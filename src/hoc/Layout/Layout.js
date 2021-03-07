@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from "react-router";
 
 import Aux from '../Aux/Aux';
-import Header from "../../components/UI/Header/Header";
+import Header from "../../components/UI/Headers/MainHeader/MainHeader";
 import Settings from "../../contianers/Settings/Settings";
 import RequestPanel from "../../contianers/RequestPanel/RequestPanel";
 

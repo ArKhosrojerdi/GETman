@@ -6,8 +6,51 @@ import Header from "./Header/Header";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from '@fortawesome/fontawesome-free-solid';
 import {faMinus} from '@fortawesome/fontawesome-free-solid';
+import * as Theme from "../UI/Theme/Theme";
+import {connect} from "react-redux";
+import styled from "styled-components";
 
 const Parameters = (props) => {
+  const theme = Theme.themes[props.theme];
+
+  const Div = styled.div`
+    border: 1px solid ${theme.border};
+    box-shadow: ${theme.shadowLight};
+    box-sizing: border-box;
+  `;
+
+  const Main = styled.main`
+    th,
+    td {
+      border: 1px solid ${theme.border};
+    }
+    
+    th {
+      background-color: ${theme.border};
+      color: ${theme.text1};
+    }
+    
+    input {
+      background-color: transparent;
+    
+      &:focus {
+        border-color: ${theme.text2};
+      }
+    }
+    
+    .Active td,
+    .Active td input{
+      background-color: ${theme.bg1} !important;
+      color: ${theme.text1} !important;
+    }
+    
+    .Inactive td,
+    .Inactive td input {
+      background-color: ${theme.bg2} !important;
+      color: ${theme.text2} !important;
+    }
+  `;
+
   let params = (
     <table>
       <thead>
@@ -20,7 +63,7 @@ const Parameters = (props) => {
       </thead>
       <tbody>
       {props.params.map((param) => (
-        <tr key={param.id} className={param.check ? classes.Active : classes.Inactive}>
+        <tr key={param.id} className={param.check ? "Active" : "Inactive"}>
           <td>
             <input
               type="checkbox"
@@ -53,13 +96,19 @@ const Parameters = (props) => {
   );
 
   return (
-    <div className={classes.Parameters}>
+    <Div className={classes.Parameters}>
       <Header add={props.add}/>
-      <div className={classes.Body}>
+      <Main className={classes.Body}>
         {params}
-      </div>
-    </div>
+      </Main>
+    </Div>
   )
 }
 
-export default Parameters;
+const mapStateToProps = state => {
+  return {
+    theme: state.theme
+  };
+}
+
+export default connect(mapStateToProps)(Parameters);

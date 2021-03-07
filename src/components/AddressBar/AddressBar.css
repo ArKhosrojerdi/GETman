@@ -1,20 +1,18 @@
 .AddressBar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 3.5rem;
-  color: #424242;
-  border: 1px solid #dfdfdf;
-  padding: .5rem;
-  box-sizing: border-box;
-  box-shadow: 0 4px 8px rgba(60,60,60,.2);
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*height: 3.5rem;*/
+  /*color: #424242;*/
+  /*border: 1px solid #dfdfdf;*/
+  /*padding: .5rem;*/
+  /*box-sizing: border-box;*/
+  /*box-shadow: 0 4px 8px rgba(60,60,60,.2);*/
 }
 
 .AddressBar select {
   cursor: pointer;
-  border: 1px solid #dfdfdf;
-  background-color: transparent;
   outline: none;
   height: 100%;
   padding: 0 .5rem;
@@ -25,29 +23,18 @@
   border-radius: 0;
 }
 
-.AddressBar select:active {
-  border: 1px solid #dfdfdf;
-}
-
 .AddressBar select:focus {
-  border: 1px solid #dfdfdf;
   outline: none;
 }
 
 .AddressBar input {
   outline: none;
   height: 100%;
-  border: 1px solid #dfdfdf;
   border-radius: 0;
   box-shadow: none;
   box-sizing: border-box;
   padding: 0 .25rem;
   width: 100%;
-}
-
-.AddressBar input:focus {
-  transition: all .1s ease-out;
-  background-color: #fafafa;
 }
 
 .AddressBar button {
@@ -71,28 +58,9 @@
 .AddressBar select:hover,
 .AddressBar button:hover {
   transition: all .15s ease-out;
-  border: 1px solid transparent;
-}
-
-.AddressBar select:hover {
-  box-shadow: 0 2px 4px rgba(66, 66, 66, .4);
-}
-
-.AddressBar button:hover {
-  transition: all .15s ease-out;
-  border: 1px solid transparent;
-  box-shadow: 0 2px 4px rgba(66, 66, 66, .4);
-  background-color: #43a047;
-  color: #ffffff;
 }
 
 @media only screen and (max-width: 575.98px) {
-  .AddressBar {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-  }
-  
   .AddressBar select,
   .AddressBar input {
     margin-bottom: .5rem;
