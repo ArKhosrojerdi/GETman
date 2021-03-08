@@ -4,15 +4,11 @@ import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/fontawesome-free-solid";
 import ParametersHeader from "../../../components/UI/Headers/Header/Header";
-import * as Theme from "../../UI/Theme/Theme";
 import styled from "styled-components";
 
-const Header = (props) => {
-  const theme = Theme.themes[props.theme];
-
-  const Button = styled.button`
+const Button = styled.button`
     color: #388e3c;
-    background-color: ${theme.bg1};
+    background-color: ${props=>props.theme.bg1};
     text-align: center !important;
     vertical-align: center !important;
     height: 2rem;
@@ -22,19 +18,20 @@ const Header = (props) => {
     font-size: 16px;
     
     &:hover {
-      transition: all .15s ease-out;
-      box-shadow: ${theme.shadowDark};
+      transition: all .15s ease;
+      box-shadow: ${props=>props.theme.shadowDark};
       background-color: #388e3c;
       color: #ffffff;
     }
     
     &:active {
-      box-shadow: ${theme.shadowDarkIn};
+      box-shadow: ${props=>props.theme.shadowDarkIn};
       border: transparent !important;
       background-color: #358b39;
     }
   `;
 
+const Header = (props) => {
   return (
     <ParametersHeader>
       <h4>Parameters</h4>

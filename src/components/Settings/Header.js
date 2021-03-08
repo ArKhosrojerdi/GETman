@@ -2,30 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import {connect} from "react-redux";
 import SettingsHeader from "../UI/Headers/Header/Header";
-import * as Theme from "../UI/Theme/Theme";
 
-const Header = (props) => {
-  const theme = Theme.themes[props.theme];
-
-  const Button = styled.button`
+const Button = styled.button`
     cursor: pointer;
     outline: none;
-    color: ${theme.blue};
-    border: 1px solid ${theme.blue};
-    background-color: ${theme.bg1};
+    color: ${props => props.theme.blue};
+    border: 1px solid ${props => props.theme.blue};
+    background-color: ${props => props.theme.bg1};
     height: 2rem;
     box-sizing: border-box;
     padding: 0 .75rem;
     font-size: 16px;
     
     &:hover {
-      transition: all .15s ease-out;
-      color: ${theme.bg1};
-      box-shadow: ${theme.shadowLight};
-      background-color: ${theme.blue};
+      transition: all .15s ease;
+      color: ${props => props.theme.bg1};
+      box-shadow: ${props => props.theme.shadowLight};
+      background-color: ${props => props.theme.blue};
     }
   `;
 
+const Header = (props) => {
   return (
     <SettingsHeader>
       <h4>Settings</h4>

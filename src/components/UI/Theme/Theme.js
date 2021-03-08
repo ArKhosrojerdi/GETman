@@ -21,7 +21,7 @@ export const DarkTheme = {
   text1: "#eeeeee",
   text2: "#bbbbbb",
   blue: "#2196f3",
-  shadowLight: "0 2px 4px rgba(20, 20, 20, .35)",
+  shadowLight: "0 2px 4px rgba(20, 20, 20, .6)",
   shadowLightIn: "inset 0 1px 2px rgba(5, 5, 5, .6)",
   shadowDark: "0 4px 6px rgba(5, 5, 5, .5)",
   shadowDarkIn: "inset 0 1px 4px rgba(0, 0, 0, .75)",

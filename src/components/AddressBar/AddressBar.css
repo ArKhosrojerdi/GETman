@@ -57,7 +57,7 @@
 
 .AddressBar select:hover,
 .AddressBar button:hover {
-  transition: all .15s ease-out;
+  transition: all .15s ease;
 }
 
 @media only screen and (max-width: 575.98px) {

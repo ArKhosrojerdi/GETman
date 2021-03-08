@@ -1,15 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
 import styled from "styled-components";
-import * as Theme from "../../Theme/Theme";
-// import classes from "./Header.css";
 
-const Header = (props) => {
-  const theme = Theme.themes[props.theme];
-
-  const Header = styled.header`
-    color: ${theme.text1};
-    background-color: ${theme.bg1};
+const Title = styled.header`
+    color: ${props => props.theme.text1};
+    background-color: ${props => props.theme.bg1};
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,8 +13,9 @@ const Header = (props) => {
     box-sizing: border-box;
   `;
 
+const Header = (props) => {
   return (
-    <Header className={props.classes}>{props.children}</Header>
+    <Title className={props.classes}>{props.children}</Title>
   );
 }
 

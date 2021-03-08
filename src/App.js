@@ -1,33 +1,20 @@
 import './App.css';
 
-import React from "react";
-import {connect} from "react-redux";
+import React, {useState} from "react";
 import Layout from "./hoc/Layout/Layout";
 import * as Theme from "./components/UI/Theme/Theme";
-import {createGlobalStyle, ThemeProvider} from "styled-components";
+import {ThemeProvider} from "styled-components";
+import GlobalStyle from "./components/UI/Theme/GlobalTheme/GlobalStyle";
 
-const App = (props) => {
-  const GlobalStyle = createGlobalStyle`
-    body {
-      background-color: ${Theme.themes[props.theme].mainBg}
-    }
-  `;
+function App() {
+  const [theme, setTheme] = useState("light");
 
   return (
-    <ThemeProvider theme={Theme.themes[props.theme]}>
-      <GlobalStyle whiteColor/>
-      <div className="App">
-        <Layout>
-        </Layout>
-      </div>
+    <ThemeProvider theme={Theme.themes[theme]}>
+      <GlobalStyle theme={theme}/>
+      <Layout setTheme={setTheme}/>
     </ThemeProvider>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    theme: state.theme
-  };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;

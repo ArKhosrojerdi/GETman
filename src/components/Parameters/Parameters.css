@@ -9,7 +9,7 @@
 .Parameters .Body {
   z-index: 100;
   padding: .75rem;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .Parameters table {
@@ -67,7 +67,7 @@
 }
 
 .Parameters .Trash:hover {
-  transition: all .1s ease-out;
+  transition: all .1s ease;
   color: red;
 }
 

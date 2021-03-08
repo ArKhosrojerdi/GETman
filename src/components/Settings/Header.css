@@ -10,7 +10,7 @@
 }
 
 .Header .Save:hover {
-  transition: all .15s ease-out;
+  transition: all .15s ease;
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(66, 66, 66, .2);
   background-color: #0d47a1;

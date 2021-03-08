@@ -1,12 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-import SettingsHeader from "../../components/UI/Headers/Header/Header";
 
 import classes from "./Settings.css";
 import Aux from "../../hoc/Aux/Aux";
 import {connect} from "react-redux";
 import Header from "../../components/Settings/Header";
-import * as Theme from "../../components/UI/Theme/Theme";
+import Div from "../../components/Settings/Style/Style";
+
 
 class Settings extends React.Component {
   state = {
@@ -42,35 +41,17 @@ class Settings extends React.Component {
       this.setState({indent: 2})
   }
 
+  changeTheme = () => {
+    this.props.setTheme(this.state.theme);
+    this.props.changeSettings({indent: this.state.indent, theme: this.state.theme})
+  }
+
   render() {
-    const theme = Theme.themes[this.props.theme];
-
-    const Div = styled.div`
-      border: 1px solid ${theme.border};
-      box-shadow: ${theme.shadowDark};
-      
-      label {
-        color: ${theme.text1};
-        text-shadow: ${theme.textShadow};
-      }
-      
-      input, select {
-        color: ${theme.text1};
-        background-color: ${theme.mainBg};
-        box-shadow: ${theme.shadowLight};
-        border: 1px solid ${theme.border};
-      } 
-      
-      input:focus, select:focus {
-        border: 1px solid ${theme.text2};
-      }
-    `;
-
     return (
       <Aux>
-        <Div className={classes.Settings}>
+        <Div theme={this.props.theme}>
           <Header
-            save={() => this.props.changeSettings({indent: this.state.indent, theme: this.state.theme})}/>
+            save={this.changeTheme}/>
           <div className={classes.Body}>
             <div className={classes.Row}>
               <div className={classes.Indent}>

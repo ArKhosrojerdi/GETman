@@ -6,51 +6,48 @@ import Header from "./Header/Header";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from '@fortawesome/fontawesome-free-solid';
 import {faMinus} from '@fortawesome/fontawesome-free-solid';
-import * as Theme from "../UI/Theme/Theme";
 import {connect} from "react-redux";
 import styled from "styled-components";
 
-const Parameters = (props) => {
-  const theme = Theme.themes[props.theme];
-
-  const Div = styled.div`
-    border: 1px solid ${theme.border};
-    box-shadow: ${theme.shadowLight};
+const Div = styled.div`
+    border: 1px solid ${props => props.theme.border};
+    box-shadow: ${props => props.theme.shadowLight};
     box-sizing: border-box;
   `;
 
-  const Main = styled.main`
+const Main = styled.main`
     th,
     td {
-      border: 1px solid ${theme.border};
+      border: 1px solid ${props => props.theme.border};
     }
     
     th {
-      background-color: ${theme.border};
-      color: ${theme.text1};
+      background-color: ${props => props.theme.border};
+      color: ${props => props.theme.text1};
     }
     
     input {
       background-color: transparent;
     
       &:focus {
-        border-color: ${theme.text2};
+        border-color: ${props => props.theme.text2};
       }
     }
     
     .Active td,
     .Active td input{
-      background-color: ${theme.bg1} !important;
-      color: ${theme.text1} !important;
+      background-color: ${props => props.theme.bg1} !important;
+      color: ${props => props.theme.text1} !important;
     }
     
     .Inactive td,
     .Inactive td input {
-      background-color: ${theme.bg2} !important;
-      color: ${theme.text2} !important;
+      background-color: ${props => props.theme.bg2} !important;
+      color: ${props => props.theme.text2} !important;
     }
   `;
 
+const Parameters = (props) => {
   let params = (
     <table>
       <thead>

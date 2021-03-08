@@ -2,60 +2,56 @@ import React from 'react';
 
 import classes from './AddressBar.css';
 import {connect} from "react-redux";
-import * as Theme from "../UI/Theme/Theme";
 import styled from "styled-components";
 
-const AddressBar = (props) => {
-  const theme = Theme.themes[props.theme];
-
-  const Div = styled.div`
+const Div = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 3.5rem;
-    border: 1px solid ${theme.border};
+    border: 1px solid ${props => props.theme.border};
     padding: .5rem;
     box-sizing: border-box;
-    box-shadow: ${theme.shadowDark};
+    box-shadow: ${props => props.theme.shadowDark};
     
     & select {
-    color: ${theme.text1};
-      border: 1px solid ${theme.border};
+    color: ${props => props.theme.text1};
+      border: 1px solid ${props => props.theme.border};
       background-color: transparent;
       
       &:hover, &:active, &:focus {
-        border: 1px solid ${theme.border};
-        box-shadow: ${theme.shadowLight};
+        border: 1px solid ${props => props.theme.border};
+        box-shadow: ${props => props.theme.shadowLight};
       }
     }
     
     & input {
-      background-color: ${theme.mainBg};
-      border: 1px solid ${theme.border};
-      color: ${theme.text1};
+      background-color: ${props => props.theme.mainBg};
+      border: 1px solid ${props => props.theme.border};
+      color: ${props => props.theme.text1};
       
       &:focus {
-        background-color: ${theme.bg1} !important;
+        background-color: ${props => props.theme.bg1} !important;
       }
       
       &:active {
-        background-color: ${theme.bg1};
+        background-color: ${props => props.theme.bg1};
       }
     }
     
     button {
       &:hover {
-        transition: all .15s ease-out;
+        transition: all .15s ease;
         border: 1px solid transparent;
-        box-shadow: ${theme.shadowLight};
+        box-shadow: ${props => props.theme.shadowLight};
         background-color: #43a047;
         color: #ffffff;
       }
       
       &:hover, &:active, &:focus {
-        //border: 1px solid ${theme.border};
-        box-shadow: ${theme.shadowLight};
+        //border: 1px solid ${props => props.theme.border};
+        box-shadow: ${props => props.theme.shadowLight};
       }
     }
     
@@ -65,6 +61,7 @@ const AddressBar = (props) => {
       height: auto;
   `;
 
+const AddressBar = (props) => {
   const select = (
     <select
       name="method"

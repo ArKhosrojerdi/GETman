@@ -1,0 +1,19 @@
+.Main {
+  max-height: 300px;
+  min-width: 2rem;
+  overflow-y: auto;
+  margin: .75rem;
+  border-top: none;
+  box-sizing: border-box;
+}
+
+.Main .Preview {
+  font-family: "Courier", sans-serif;
+  line-height: 24px;
+  word-break: break-word;
+}
+
+.Main p {
+  padding: .5rem;
+  margin: 0;
+}

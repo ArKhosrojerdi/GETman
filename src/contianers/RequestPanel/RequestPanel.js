@@ -26,8 +26,13 @@ class RequestPanel extends React.Component {
   }
 
   componentDidMount() {
+
     this.setState({method: this.state.methods[0]})
   }
+
+  // shouldComponentUpdate(nextProps, nextState, nextContext) {
+  //
+  // }
 
   changeURLHandler = (event) => {
     this.setState({URL: event.target.value});
@@ -79,7 +84,6 @@ class RequestPanel extends React.Component {
               used: true
             });
           }
-          // console.log(response);
         })
         .catch(error => this.setState({response: error}));
     }
@@ -157,7 +161,6 @@ class RequestPanel extends React.Component {
 
   render() {
     let responseBody;
-    // if (Object.keys(this.state.response).length !== 0) {
     responseBody =
       <Response
         responseObj={this.state.response}
@@ -169,7 +172,6 @@ class RequestPanel extends React.Component {
         used={this.state.used}
         time={this.state.resTime}
       />
-    // }
 
     return (
       <div className={classes.RequestPanel}>

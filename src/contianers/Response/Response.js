@@ -6,10 +6,10 @@ import classes from "./Response.css";
 import Tabs from "../../components/Response/Tabs/Tabs";
 import Header from "../../components/Response/Header/Header";
 import Row from "../../components/Response/Row/Row";
-import ParametersHeader from "../../components/UI/Headers/Header/Header";
-import * as Theme from "../../components/UI/Theme/Theme";
-import styled from "styled-components";
 import {connect} from "react-redux";
+import StyleMain from "../../components/Response/Style/StyleMain";
+import StyleDiv from "../../components/Response/Style/StyleDiv";
+
 
 class Response extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -160,32 +160,10 @@ class Response extends React.Component {
   render() {
     let response, element = [];
     let resObj = JSON.stringify(this.props.responseObj, undefined, this.props.indent);
+    // let resObj = JSON.stringify(this.props.responseObj, undefined, 4);
     let synHighlighted = this.syntaxHighlight(resObj);
     synHighlighted = synHighlighted.split("\n");
     element = this.printObj(synHighlighted, element);
-
-    const theme = Theme.themes[this.props.theme];
-    const Div = styled.div`
-      border: 1px solid ${theme.border};
-      color: ${theme.text1};
-      box-shadow: ${theme.shadowLight};
-    `;
-
-    const Main = styled.main`
-      background-color: ${theme.bg2};
-      
-        // & p {
-        //   background-color: ${theme.bg2};
-        // }
-        
-        & > div {
-          background-color: ${theme.bg2};
-        }
-        
-        & li {
-          background-color: ${theme.bg1};
-        }
-    `;
 
     if (this.props.used) {
       if (this.props.tab === "preview") {
@@ -206,7 +184,7 @@ class Response extends React.Component {
     }
 
     return (
-      <Div className={classes.ResponseBox}>
+      <StyleDiv theme={this.props.theme}>
         <Header
           status={this.props.status}
           statusText={this.props.statusText}
@@ -215,10 +193,10 @@ class Response extends React.Component {
           navigation={this.props.nav}
           tab={this.props.tab}
           change={this.props.change}/>
-        <Main className={classes.Body}>
+        <StyleMain theme={this.props.theme}>
           {this.props.used ? response : ""}
-        </Main>
-      </Div>
+        </StyleMain>
+      </StyleDiv>
     )
   }
 }

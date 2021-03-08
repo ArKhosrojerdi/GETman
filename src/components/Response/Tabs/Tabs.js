@@ -2,29 +2,25 @@ import React from "react";
 
 import Aux from "../../../hoc/Aux/Aux";
 import classes from "./Tabs.css";
-import * as Theme from "../../UI/Theme/Theme";
 import {connect} from "react-redux";
 import styled from "styled-components";
 
-const Tabs = (props) => {
-  const theme = Theme.themes[props.theme];
-
-  const Ul = styled.ul`
-    background-color: ${theme.border};
+const Ul = styled.ul`
+    background-color: ${props => props.theme.border};
     
     & li {
-      color: ${theme.text2};
+      color: ${props => props.theme.text2};
       
       &:hover {
-        color: ${theme.text1};
-        transition: all .05s ease-out;
+        color: ${props => props.theme.text1};
+        transition: all .05s ease;
       }
       
       &.Active {
         transform: translateY(0);
-        background-color: ${theme.mainBg} !important;
-        box-shadow: ${theme.shadowLightIn};
-        color: ${theme.text1} !important;
+        background-color: ${props => props.theme.mainBg} !important;
+        box-shadow: ${props => props.theme.shadowLightIn};
+        color: ${props => props.theme.text1} !important;
         cursor: default;
       
         &::after {
@@ -34,12 +30,13 @@ const Tabs = (props) => {
           right: 1.5px;
           width: 61px;
           height: 1.5px;
-          background: ${theme.mainBg};
+          background: ${props => props.theme.mainBg};
         }
       }
     }
   `;
 
+const Tabs = (props) => {
   return (
     <Aux>
       <Ul className={classes.Tabs}>

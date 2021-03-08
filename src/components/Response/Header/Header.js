@@ -1,15 +1,9 @@
 import React from "react";
-import styled from "styled-components";
-import {connect} from "react-redux";
 import ResponseHeader from "../../UI/Headers/Header/Header";
-
-import * as Theme from "../../UI/Theme/Theme";
 
 import classes from "./Header.css";
 
 const Header = (props) => {
-  const theme = Theme.themes[props.theme];
-
   let status;
   if (props.status === 200) {
     status = (<span className={classes.Success}>{props.status} OK</span>)
@@ -31,10 +25,4 @@ const Header = (props) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    theme: state.theme
-  };
-}
-
-export default connect(mapStateToProps)(Header);
+export default Header;
