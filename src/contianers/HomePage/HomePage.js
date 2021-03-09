@@ -1,19 +1,22 @@
 import React from 'react';
 
-import classes from "./RequestPanel.css";
+import classes from "./HomePage.css";
 import AddressBar from "../../components/AddressBar/AddressBar";
 import Response from "../Response/Response";
 import Parameters from "../../components/Parameters/Parameters";
 import axios from "axios";
 
-class RequestPanel extends React.Component {
+class HomePage extends React.Component {
   state = {
     URL: "https://jsonplaceholder.typicode.com/posts",
     methods: ["GET", "POST"],
     method: "",
-    response: {},
-    status: "",
-    statusText: "",
+    response: {
+      data: "",
+      status: 0,
+      statusText: "",
+      time: 0
+    },
     parameters: [
       {id: 0, key: 'postId', value: 1, check: false},
       {id: 1, key: 'comment', value: 2, check: false}
@@ -22,17 +25,11 @@ class RequestPanel extends React.Component {
     navbar: ["pretty", "raw", "preview"],
     tab: "",
     used: false,
-    resTime: 0
   }
 
   componentDidMount() {
-
     this.setState({method: this.state.methods[0]})
   }
-
-  // shouldComponentUpdate(nextProps, nextState, nextContext) {
-  //
-  // }
 
   changeURLHandler = (event) => {
     this.setState({URL: event.target.value});
@@ -42,50 +39,68 @@ class RequestPanel extends React.Component {
     this.setState({method: event.target.value});
   }
 
-  sendRequestHandler = () => {
+  saveRequestResponse = (response) => {
+    this.setState({
+      response: {
+        data: response.data,
+        status: response.status,
+        statusText: response.statusText,
+        time: response.time
+      }
+    });
+  }
+
+  updateUseStateHandler = () => {
+    if (!this.state.used) {
+      this.setState({
+        tab: this.state.navbar[0],
+        used: true
+      });
+    }
+  }
+
+  sendRequestHandler = (e) => {
+    e.preventDefault();
     const startTime = Date.now();
     if (this.state.method === this.state.methods[0]) {
       axios.get(this.state.URL)
         .then(response => {
-          const responseTime = Date.now() - startTime;
-          let resp = {};
-          for (const [key, value] of Object.entries(response.data)) {
-            resp[key] = value;
-          }
-          this.setState({
-            response: resp,
-            status: response.status,
-            statusText: response.statusText,
-            resTime: responseTime
+          // let resp = {};
+          // for (const [key, value] of Object.entries(response.data)) {
+          //   resp[key] = value;
+          // }
+
+          const time = Date.now() - startTime;
+          this.saveRequestResponse({
+            ...response,
+            time: time
           });
-          if (!this.state.used) {
-            this.setState({
-              tab: this.state.navbar[0],
-              used: true
-            });
-          }
+          this.updateUseStateHandler();
         })
-        .catch(error => this.setState({response: error}));
+        .catch(error => {
+          const time = Date.now() - startTime;
+          this.saveRequestResponse({
+            ...error.response,
+            time: time
+          })
+        });
     } else if (this.state.method === this.state.methods[1]) {
       axios.post(this.state.URL)
         .then((response) => {
-          const responseTime = Date.now() - startTime;
-          this.setState({
-            response: response,
-            status: response.status,
-            statusText: response.statusText,
-            used: true,
-            resTime: responseTime
+          const time = Date.now() - startTime;
+          this.saveRequestResponse({
+            ...response,
+            time: time
           });
-
-          if (!this.state.used) {
-            this.setState({
-              tab: this.state.navbar[0],
-              used: true
-            });
-          }
+          this.updateUseStateHandler();
         })
-        .catch(error => this.setState({response: error}));
+        .catch(error => {
+          const time = Date.now() - startTime;
+          this.saveRequestResponse({
+            ...error.response,
+            time: time
+          });
+        });
     }
   }
 
@@ -163,14 +178,14 @@ class RequestPanel extends React.Component {
     let responseBody;
     responseBody =
       <Response
-        responseObj={this.state.response}
-        status={this.state.status}
-        statusText={this.state.statusText}
+        responseObj={this.state.response.data}
+        status={this.state.response.status}
+        statusText={this.state.response.statusText}
         nav={this.state.navbar}
         tab={this.state.tab}
         change={this.changeTabHandler}
         used={this.state.used}
-        time={this.state.resTime}
+        time={this.state.response.time}
       />
 
     return (
@@ -193,4 +208,4 @@ class RequestPanel extends React.Component {
   }
 }
 
-export default RequestPanel;
+export default HomePage;

@@ -68,10 +68,14 @@
     box-shadow: 0 4px 4px rgba(60, 60, 60, .2);
   }
   
-  .Header .Links button {
+  .Header .Links .Link {
     font-size: 14px;
     height: 2rem;
     width: 4rem;
+  }
+  
+  .Header .Links button {
+    font-size: 14px;
   }
   
   .Header .Container {
@@ -87,11 +91,14 @@
     width: 100%;
   }
   
+  .Header .Links .Link {
+    height: 2rem;
+    width: 4rem;
+  }
+  
   .Header .Links button {
     font-size: 12px;
     padding: 0;
-    height: 2rem;
-    width: 4rem;
   }
   
   .Header .Container {

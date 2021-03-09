@@ -1,6 +1,26 @@
+.ResponseBox {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
 .Response {
   font-family: "Courier", sans-serif;
   margin: 0;
+}
+
+.ResponseBox .Main {
+  max-height: 300px;
+  min-width: 2rem;
+  overflow-y: auto;
+  border-top: none;
+  margin: .75rem;
+}
+
+.Main p {
+  word-break: break-word;
+  line-height: 24px;
+  margin: .125rem;
 }
 
 .Response .Key {
@@ -26,7 +46,7 @@
 
 .Response li {
   text-align: left;
-  margin: .25rem;
+  margin: .125rem;
   padding: .25rem;
 }
 
@@ -47,15 +67,7 @@
   color: firebrick;
 }
 
-h6 {
-  margin-left: 1rem;
-}
-
 @media only screen and (max-width: 767.98px) {
-  .Response {
-    padding-left: 1.75rem;
-  }
-  
   .Response .Item {
     display: block;
   }
@@ -76,7 +88,7 @@ h6 {
 
 @media only screen and (max-width: 575.98px) {
   .Response {
-    padding-left: 1.625rem;
+    padding-left: 1.0625rem;
   }
   
   .Response .Item {

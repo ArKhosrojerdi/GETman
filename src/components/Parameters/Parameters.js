@@ -22,7 +22,7 @@ const Main = styled.main`
     }
     
     th {
-      background-color: ${props => props.theme.border};
+      background-color: ${props => props.theme.bg3};
       color: ${props => props.theme.text1};
     }
     
@@ -32,18 +32,22 @@ const Main = styled.main`
       &:focus {
         border-color: ${props => props.theme.text2};
       }
+      
+      &[type="checkbox"] {
+        text-align: center !important;
+      }
     }
     
     .Active td,
     .Active td input{
-      background-color: ${props => props.theme.bg1} !important;
-      color: ${props => props.theme.text1} !important;
+      background-color: ${props => props.theme.bg1};
+      color: ${props => props.theme.text1};
     }
     
     .Inactive td,
     .Inactive td input {
-      background-color: ${props => props.theme.bg2} !important;
-      color: ${props => props.theme.text2} !important;
+      background-color: ${props => props.theme.bg2};
+      color: ${props => props.theme.text2};
     }
   `;
 
@@ -81,10 +85,12 @@ const Parameters = (props) => {
             />
           </td>
           <td>
-            <button className={classes.Trash}
-                    onClick={() => props.remove(param.id)}>
-              <FontAwesomeIcon icon={faTrash}/>
-            </button>
+            {props.params.length === 1 ? null :
+              <button className={classes.Trash}
+                      onClick={() => props.remove(param.id)}>
+                <FontAwesomeIcon icon={faTrash}/>
+              </button>}
+
           </td>
         </tr>
       ))}

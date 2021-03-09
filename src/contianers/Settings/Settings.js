@@ -4,8 +4,28 @@ import classes from "./Settings.css";
 import Aux from "../../hoc/Aux/Aux";
 import {connect} from "react-redux";
 import Header from "../../components/Settings/Header";
-import Div from "../../components/Settings/Style/Style";
+import styled from "styled-components";
 
+const Div = styled.div`
+  border: 1px solid ${props => props.theme.border};
+  box-shadow: ${props => props.theme.shadowDark};
+  
+  label {
+    color: ${props => props.theme.text1};
+    text-shadow: ${props => props.theme.textShadow};
+  }
+  
+  input, select {
+    color: ${props => props.theme.text1};
+    background-color: ${props => props.theme.mainBg};
+    box-shadow: ${props => props.theme.shadowLight};
+    border: 1px solid ${props => props.theme.border};
+  } 
+  
+  input:focus, select:focus {
+    border: 1px solid ${props => props.theme.text2};
+  }
+`;
 
 class Settings extends React.Component {
   state = {
@@ -49,7 +69,7 @@ class Settings extends React.Component {
   render() {
     return (
       <Aux>
-        <Div theme={this.props.theme}>
+        <Div className={classes.Settings}>
           <Header
             save={this.changeTheme}/>
           <div className={classes.Body}>

@@ -1,14 +1,11 @@
 .AddressBar {
-  /*display: flex;*/
-  /*flex-direction: row;*/
-  /*align-items: center;*/
-  /*justify-content: center;*/
-  /*height: 3.5rem;*/
-  /*color: #424242;*/
-  /*border: 1px solid #dfdfdf;*/
-  /*padding: .5rem;*/
-  /*box-sizing: border-box;*/
-  /*box-shadow: 0 4px 8px rgba(60,60,60,.2);*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  padding: .5rem;
+  box-sizing: border-box;
 }
 
 .AddressBar select {
@@ -21,10 +18,17 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   border-radius: 0;
+  background-color: transparent;
 }
 
 .AddressBar select:focus {
   outline: none;
+}
+
+.AddressBar .Row {
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .AddressBar input {
@@ -50,6 +54,10 @@
   margin-left: .5rem;
 }
 
+.AddressBar button:hover {
+  background-color: #43a047;
+  color: #ffffff;
+}
 
 .AddressBar button:active {
   box-shadow: inset 0 2px 4px rgba(66, 66, 66, .4);
@@ -61,17 +69,30 @@
 }
 
 @media only screen and (max-width: 575.98px) {
-  .AddressBar select,
-  .AddressBar input {
+  .AddressBar {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+  }
+  
+  .AddressBar .Row {
+    height: 2rem;
     margin-bottom: .5rem;
-    width: 100%;
+  }
+  
+  .AddressBar .Row select,
+  .AddressBar .Row input {
+    height: 100%;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
   }
   
+  .AddressBar select {
+    margin-right: .25rem !important;
+  }
+  
   .AddressBar button {
-    margin: 0;
     width: 100%;
   }
   

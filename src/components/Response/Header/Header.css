@@ -1,21 +1,3 @@
-/*.Header {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: space-between;*/
-/*  background-color: #f2f2f2;*/
-/*  padding: .75rem;*/
-/*  height: 3.5rem;*/
-/*  box-sizing: border-box;*/
-/*}*/
-
-.Success {
-  color: #388e3c;
-}
-
-.Fail {
-  color: firebrick;
-}
-
 .Status {
   display: flex;
   align-items: center;
@@ -24,6 +6,26 @@
 
 .Status h6 {
   margin-left: 1rem !important;
+}
+
+.Status .Green {
+  color: #388e3c;
+}
+
+.Status .Teal {
+  color: #80cbc4;
+}
+
+.Status .Red {
+  color: #c62828;
+}
+
+.Status .Orange {
+  color: #f57c00;
+}
+
+.Status .Yellow {
+  color: #ffeb3b;
 }
 
 @media only screen and (max-width: 575.98px) {

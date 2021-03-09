@@ -4,21 +4,13 @@ import classes from './AddressBar.css';
 import {connect} from "react-redux";
 import styled from "styled-components";
 
-const Div = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 3.5rem;
+const Form = styled.form`
     border: 1px solid ${props => props.theme.border};
-    padding: .5rem;
-    box-sizing: border-box;
     box-shadow: ${props => props.theme.shadowDark};
     
     & select {
-    color: ${props => props.theme.text1};
+      color: ${props => props.theme.text1};
       border: 1px solid ${props => props.theme.border};
-      background-color: transparent;
       
       &:hover, &:active, &:focus {
         border: 1px solid ${props => props.theme.border};
@@ -42,23 +34,13 @@ const Div = styled.div`
     
     button {
       &:hover {
-        transition: all .15s ease;
-        border: 1px solid transparent;
         box-shadow: ${props => props.theme.shadowLight};
-        background-color: #43a047;
-        color: #ffffff;
       }
       
       &:hover, &:active, &:focus {
-        //border: 1px solid ${props => props.theme.border};
         box-shadow: ${props => props.theme.shadowLight};
       }
     }
-    
-    @media only screen and (max-width: 575.98px) {
-      flex-direction: column;
-      justify-content: center;
-      height: auto;
   `;
 
 const AddressBar = (props) => {
@@ -76,14 +58,16 @@ const AddressBar = (props) => {
   )
 
   return (
-    <Div className={classes.AddressBar}>
-      {select}
-      <input type="text" placeholder="http://example.com/api" value={props.url}
-             onChange={(event) => props.urlHandler(event)}/>
-      <button onClick={props.send}>
+    <Form className={classes.AddressBar}>
+      <div className={classes.Row}>
+        {select}
+        <input type="text" placeholder="http://example.com/api" value={props.url}
+               onChange={(event) => props.urlHandler(event)}/>
+      </div>
+      <button type="submit" onClick={(event)=>props.send(event)}>
         Send
       </button>
-    </Div>
+    </Form>
   )
 }
 

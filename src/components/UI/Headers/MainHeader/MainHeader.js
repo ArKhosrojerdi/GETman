@@ -10,30 +10,30 @@ import DarkLogo from "../../../../assets/images/dark-logo512.png";
 import LightLogo from "../../../../assets/images/logo512.png";
 
 const Header = styled.header`
-    background-color: ${props => props.theme.bg2};
-    box-shadow: ${props => props.theme.shadowDark};
-  `;
+  background-color: ${props => props.theme.bg2};
+  box-shadow: ${props => props.theme.shadowDark};
+`;
 
 const Button = styled.button`
-    color: ${props => props.theme.text2};
+  color: ${props => props.theme.text2};
+  
+  &:hover {
+    transition: all .15s ease;
+    color: ${props => props.theme.text1};
+    box-shadow: ${props => props.theme.shadowLight};
+  }
+  
+  &.Active {
+    color: ${props => props.theme.text1};
+    background-color: ${props => props.theme.mainBg} !important;
+    box-shadow: ${props => props.theme.shadowDarkIn};
     
     &:hover {
-      transition: all .15s ease;
-      color: ${props => props.theme.text1};
-      box-shadow: ${props => props.theme.shadowLight};
+      background-color: ${props => props.theme.mainBg};
+      cursor: default;
     }
-    
-    &.Active {
-      color: ${props => props.theme.text1};
-      background-color: ${props => props.theme.mainBg} !important;
-      box-shadow: ${props => props.theme.shadowDarkIn};
-      
-      &:hover {
-        background-color: ${props => props.theme.mainBg};
-        cursor: default;
-      }
-    }
-  `;
+  }
+`;
 
 const MainHeader = (props) => {
   let path = useLocation().pathname;
@@ -48,6 +48,7 @@ const MainHeader = (props) => {
           </div>
           <div className={classes.Links}>
             <NavLink to="/settings" className={classes.Link}>
+              {/* TODO: replace("Active", classes.Active) or use the actual active selector */}
               <Button className={path === "/settings" ? "Active" : ""}>
                 Settings
               </Button>

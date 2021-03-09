@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {connect} from "react-redux";
-import SettingsHeader from "../UI/Headers/Header/Header";
+import SettingsHeader from "../UI/Headers/ComponentHeader/ComponentHeader";
 
 const Button = styled.button`
     cursor: pointer;

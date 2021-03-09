@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/fontawesome-free-solid";
-import ParametersHeader from "../../../components/UI/Headers/Header/Header";
+import ParametersHeader from "../../UI/Headers/ComponentHeader/ComponentHeader";
 import styled from "styled-components";
 
 const Button = styled.button`

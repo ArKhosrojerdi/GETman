@@ -7,9 +7,31 @@ import Tabs from "../../components/Response/Tabs/Tabs";
 import Header from "../../components/Response/Header/Header";
 import Row from "../../components/Response/Row/Row";
 import {connect} from "react-redux";
-import StyleMain from "../../components/Response/Style/StyleMain";
-import StyleDiv from "../../components/Response/Style/StyleDiv";
+import styled from "styled-components";
+import {StatusCodes} from "../../store/StatusCodes";
 
+const Div = styled.div`
+  border: 1px solid ${props => props.theme.border};
+  color: ${props => props.theme.text1};
+  box-shadow: ${props => props.theme.shadowLight};
+`;
+
+const Main = styled.main`
+  background-color: ${props => props.theme.bg2};
+ 
+    & > div {
+      background-color: ${props => props.theme.bg2};
+      width: 100%;
+    }
+
+    & li {
+      background-color: ${props => props.theme.bg1};
+    }
+    
+    & p {
+      background-color: ${props => props.theme.bg1};
+    }
+`;
 
 class Response extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -159,8 +181,10 @@ class Response extends React.Component {
 
   render() {
     let response, element = [];
-    let resObj = JSON.stringify(this.props.responseObj, undefined, this.props.indent);
-    // let resObj = JSON.stringify(this.props.responseObj, undefined, 4);
+    let resObj = this.props.responseObj;
+    if (resObj !== "") {
+      resObj = JSON.stringify(this.props.responseObj, undefined, this.props.indent);
+    }
     let synHighlighted = this.syntaxHighlight(resObj);
     synHighlighted = synHighlighted.split("\n");
     element = this.printObj(synHighlighted, element);
@@ -168,35 +192,33 @@ class Response extends React.Component {
     if (this.props.used) {
       if (this.props.tab === "preview") {
         response = (
-          <div>
+          // <div>
             <p className={classes.Preview}>{JSON.stringify(this.props.responseObj)}</p>
-          </div>
+          // </div>
         )
       } else {
         response = (
-          <div>
-            <ol className={classes.Response} style={this.props.tab === "raw" ? {listStyle: "none", padding: 0} : {}}>
-              {element}
-            </ol>
-          </div>
+          <ol className={classes.Response} style={this.props.tab === "raw" ? {listStyle: "none", padding: 0} : {}}>
+            {element}
+          </ol>
         );
       }
     }
 
     return (
-      <StyleDiv theme={this.props.theme}>
+      <Div className={classes.ResponseBox}>
         <Header
           status={this.props.status}
-          statusText={this.props.statusText}
+          statusText={StatusCodes[this.props.status]}
           time={this.props.time}/>
         <Tabs
           navigation={this.props.nav}
           tab={this.props.tab}
           change={this.props.change}/>
-        <StyleMain theme={this.props.theme}>
+        <Main className={classes.Main}>
           {this.props.used ? response : ""}
-        </StyleMain>
-      </StyleDiv>
+        </Main>
+      </Div>
     )
   }
 }

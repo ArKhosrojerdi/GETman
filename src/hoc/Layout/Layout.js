@@ -4,15 +4,15 @@ import {Route} from "react-router";
 import Aux from '../Aux/Aux';
 import Header from "../../components/UI/Headers/MainHeader/MainHeader";
 import Settings from "../../contianers/Settings/Settings";
-import RequestPanel from "../../contianers/RequestPanel/RequestPanel";
+import HomePage from "../../contianers/HomePage/HomePage";
 
 function Layout(props) {
   return (
     <Aux>
       <Header/>
-      {/*<Route path="/" exact component={RequestPanel}/>*/}
+      {/*<Route path="/" exact component={HomePage}/>*/}
       <Route path="/" exact>
-        <RequestPanel {...props}/>
+        <HomePage {...props}/>
       </Route>
       <Route path="/settings">
         <Settings {...props}/>
