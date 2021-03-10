@@ -5,6 +5,7 @@ import Aux from "../../hoc/Aux/Aux";
 import {connect} from "react-redux";
 import Header from "../../components/Settings/Header";
 import styled from "styled-components";
+import Themes from "../../store/Themes";
 
 const Div = styled.div`
   border: 1px solid ${props => props.theme.border};
@@ -30,7 +31,6 @@ const Div = styled.div`
 class Settings extends React.Component {
   state = {
     indent: 4,
-    themes: ["light", "dark"],
     theme: "light"
   }
 
@@ -67,11 +67,15 @@ class Settings extends React.Component {
   }
 
   render() {
+    console.log();
+
     return (
       <Aux>
         <Div className={classes.Settings}>
           <Header
-            save={this.changeTheme}/>
+            save={this.changeTheme}
+            showSave={this.state.indent !== this.props.indent || this.state.theme !== this.props.theme}
+          />
           <div className={classes.Body}>
             <div className={classes.Row}>
               <div className={classes.Indent}>
@@ -88,7 +92,7 @@ class Settings extends React.Component {
                 <label htmlFor="theme">Theme:</label>
                 <select id="theme" value={this.state.theme}
                         onChange={(event) => this.changeThemeHandler(event)}>
-                  {this.state.themes.map((theme, index) => (
+                  {Themes.map((theme, index) => (
                     <option
                       key={index}
                       value={theme}>

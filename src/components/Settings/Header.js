@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import {connect} from "react-redux";
 import SettingsHeader from "../UI/Headers/ComponentHeader/ComponentHeader";
 
 const Button = styled.button`
@@ -27,18 +26,11 @@ const Header = (props) => {
     <SettingsHeader>
       <h4>Settings</h4>
       <div>
-        <Button onClick={props.save}>
-          Save
-        </Button>
+        {props.showSave ? <Button onClick={props.save}>Save</Button> : null}
+
       </div>
     </SettingsHeader>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    theme: state.theme
-  };
-}
-
-export default connect(mapStateToProps)(Header);
+export default Header;

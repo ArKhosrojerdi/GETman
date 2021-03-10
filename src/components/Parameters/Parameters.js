@@ -63,7 +63,7 @@ const Parameters = (props) => {
       </tr>
       </thead>
       <tbody>
-      {props.params.map((param) => (
+      {props.parameters.map(param => (
         <tr key={param.id} className={param.check ? "Active" : "Inactive"}>
           <td>
             <input
@@ -85,7 +85,7 @@ const Parameters = (props) => {
             />
           </td>
           <td>
-            {props.params.length === 1 ? null :
+            {props.parameters.length === 1 ? null :
               <button className={classes.Trash}
                       onClick={() => props.remove(param.id)}>
                 <FontAwesomeIcon icon={faTrash}/>
@@ -110,7 +110,7 @@ const Parameters = (props) => {
 
 const mapStateToProps = state => {
   return {
-    theme: state.theme
+    parameters: state.parameters
   };
 }
 

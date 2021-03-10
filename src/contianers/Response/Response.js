@@ -1,5 +1,3 @@
-// TODO: Don't rerender this component after changing in address bar
-
 import React from "react";
 
 import classes from "./Response.css";
@@ -9,6 +7,7 @@ import Row from "../../components/Response/Row/Row";
 import {connect} from "react-redux";
 import styled from "styled-components";
 import {StatusCodes} from "../../store/StatusCodes";
+import Loading from "../../components/Loading/Loading";
 
 const Div = styled.div`
   border: 1px solid ${props => props.theme.border};
@@ -34,11 +33,7 @@ const Main = styled.main`
 `;
 
 class Response extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.responseObj !== this.props.responseObj || nextProps.tab !== this.props.tab;
-  }
-
-  printObj(responseObj, element) {
+  printObj(resData, element) {
     let className, key, body;
     const TYPES = {
       KEY: "[__Key__]",
@@ -48,16 +43,16 @@ class Response extends React.Component {
       NULL: "[__Null__]"
     };
 
-    for (let i = 0; i < responseObj.length; i++) {
+    for (let i = 0; i < resData.length; i++) {
       className = "";
-      key = responseObj[i].split(':')[0];
-      if (responseObj[i].indexOf(TYPES.KEY) > -1) {
+      key = resData[i].split(':')[0];
+      if (resData[i].indexOf(TYPES.KEY) > -1) {
         key = key.replace(TYPES.KEY, "");
-        responseObj[i] = responseObj[i].replace(TYPES.KEY, "");
+        resData[i] = resData[i].replace(TYPES.KEY, "");
       }
       key = key.replace(/ /g, '\u00a0');
 
-      body = responseObj[i].split(':')[1];
+      body = resData[i].split(':')[1];
       if (body === undefined) {
         body = key;
         key = null;
@@ -89,13 +84,13 @@ class Response extends React.Component {
               classes={
                 {
                   Item: classes.Item,
-                  Key: this.props.tab === "pretty" ? classes.Key : null,
-                  Type: this.props.tab === "pretty" ? classes.Number : null
+                  Key: this.props.viewResponseOptionTab === "pretty" ? classes.Key : null,
+                  Type: this.props.viewResponseOptionTab === "pretty" ? classes.Number : null
                 }
               }
               keys={key}
               body={body}
-              isEOL={responseObj[i][responseObj[i].length - 1]}
+              isEOL={resData[i][resData[i].length - 1]}
             />
           );
           break;
@@ -106,13 +101,13 @@ class Response extends React.Component {
               classes={
                 {
                   Item: classes.Item,
-                  Key: this.props.tab === "pretty" ? classes.Key : null,
-                  Type: this.props.tab === "pretty" ? classes.String : null
+                  Key: this.props.viewResponseOptionTab === "pretty" ? classes.Key : null,
+                  Type: this.props.viewResponseOptionTab === "pretty" ? classes.String : null
                 }
               }
               keys={key}
               body={body}
-              isEOL={responseObj[i][responseObj[i].length - 1]}/>
+              isEOL={resData[i][resData[i].length - 1]}/>
           );
           break;
         case 'Boolean':
@@ -122,13 +117,13 @@ class Response extends React.Component {
               classes={
                 {
                   Item: classes.Item,
-                  Key: this.props.tab === "pretty" ? classes.Key : null,
-                  Type: this.props.tab === "pretty" ? classes.Boolean : null
+                  Key: this.props.viewResponseOptionTab === "pretty" ? classes.Key : null,
+                  Type: this.props.viewResponseOptionTab === "pretty" ? classes.Boolean : null
                 }
               }
               keys={key}
               body={body}
-              isEOL={responseObj[i][responseObj[i].length - 1]}/>
+              isEOL={resData[i][resData[i].length - 1]}/>
           );
           break;
         case 'Null':
@@ -138,19 +133,19 @@ class Response extends React.Component {
               classes={
                 {
                   Item: classes.Item,
-                  Key: this.props.tab === "pretty" ? classes.Key : null,
-                  Type: this.props.tab === "pretty" ? classes.Null : null
+                  Key: this.props.viewResponseOptionTab === "pretty" ? classes.Key : null,
+                  Type: this.props.viewResponseOptionTab === "pretty" ? classes.Null : null
                 }
               }
               keys={key}
               body={body}
-              isEOL={responseObj[i][responseObj[i].length - 1]}/>
+              isEOL={resData[i][resData[i].length - 1]}/>
           );
           break;
         default:
           element.push(
             <li key={i}>
-              <b className={this.props.tab === "pretty" ? classes.Key : null}>{key}</b>
+              <b className={this.props.viewResponseOptionTab === "pretty" ? classes.Key : null}>{key}</b>
               {key === null ? "" : ":"}
               <span>{body}</span>
             </li>
@@ -181,42 +176,41 @@ class Response extends React.Component {
 
   render() {
     let response, element = [];
-    let resObj = this.props.responseObj;
+    let resObj = {...this.props.response.data};
     if (resObj !== "") {
-      resObj = JSON.stringify(this.props.responseObj, undefined, this.props.indent);
+      resObj = JSON.stringify(this.props.response.data, undefined, this.props.indent);
     }
     let synHighlighted = this.syntaxHighlight(resObj);
     synHighlighted = synHighlighted.split("\n");
     element = this.printObj(synHighlighted, element);
 
-    if (this.props.used) {
-      if (this.props.tab === "preview") {
-        response = (
-          // <div>
-            <p className={classes.Preview}>{JSON.stringify(this.props.responseObj)}</p>
-          // </div>
-        )
-      } else {
-        response = (
-          <ol className={classes.Response} style={this.props.tab === "raw" ? {listStyle: "none", padding: 0} : {}}>
-            {element}
-          </ol>
-        );
-      }
+    // if (this.props.used) {
+    if (this.props.viewResponseOptionTab === "preview") {
+      response = (
+        // <div>
+        <p className={classes.Preview}>{JSON.stringify(this.props.response.data)}</p>
+        // </div>
+      )
+    } else {
+      response = (
+        <ol className={classes.Response}
+            style={this.props.viewResponseOptionTab === "raw" ? {listStyle: "none", padding: 0} : {}}>
+          {element}
+        </ol>
+      );
     }
+    // }
 
     return (
       <Div className={classes.ResponseBox}>
         <Header
-          status={this.props.status}
-          statusText={StatusCodes[this.props.status]}
-          time={this.props.time}/>
+          status={this.props.response.status}
+          time={this.props.response.time}
+          statusText={StatusCodes[this.props.response.status]}/>
         <Tabs
-          navigation={this.props.nav}
-          tab={this.props.tab}
           change={this.props.change}/>
         <Main className={classes.Main}>
-          {this.props.used ? response : ""}
+          {this.props.isLoading ? <Loading/> : (this.props.response.data !== "" ? response : null)}
         </Main>
       </Div>
     )
@@ -226,7 +220,9 @@ class Response extends React.Component {
 const mapStateToProps = state => {
   return {
     indent: state.indent,
-    theme: state.theme
+    viewResponseOptionTab: state.viewResponseOptionTab,
+    response: state.response,
+    isLoading: state.isLoading
   };
 }
 

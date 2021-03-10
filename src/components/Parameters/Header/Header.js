@@ -1,5 +1,4 @@
 import React from "react";
-import {connect} from "react-redux";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/fontawesome-free-solid";
@@ -8,7 +7,7 @@ import styled from "styled-components";
 
 const Button = styled.button`
     color: #388e3c;
-    background-color: ${props=>props.theme.bg1};
+    background-color: ${props => props.theme.bg1};
     text-align: center !important;
     vertical-align: center !important;
     height: 2rem;
@@ -19,13 +18,13 @@ const Button = styled.button`
     
     &:hover {
       transition: all .15s ease;
-      box-shadow: ${props=>props.theme.shadowDark};
+      box-shadow: ${props => props.theme.shadowDark};
       background-color: #388e3c;
       color: #ffffff;
     }
     
     &:active {
-      box-shadow: ${props=>props.theme.shadowDarkIn};
+      box-shadow: ${props => props.theme.shadowDarkIn};
       border: transparent !important;
       background-color: #358b39;
     }
@@ -42,10 +41,4 @@ const Header = (props) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    theme: state.theme
-  };
-}
-
-export default connect(mapStateToProps)(Header);
+export default Header;

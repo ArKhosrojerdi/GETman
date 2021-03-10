@@ -65,10 +65,10 @@ const MainHeader = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     theme: state.theme
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps)(MainHeader);

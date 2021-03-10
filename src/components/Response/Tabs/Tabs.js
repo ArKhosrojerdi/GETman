@@ -1,8 +1,10 @@
 import React from "react";
+import {connect} from "react-redux";
 
 import classes from "./Tabs.css";
-import {connect} from "react-redux";
 import styled from "styled-components";
+import ViewResponseOptions from "../../../store/ViewResponseOptions";
+
 
 const Ul = styled.ul`
     background-color: ${props => props.theme.bg3};
@@ -37,7 +39,7 @@ const Ul = styled.ul`
 const Tabs = (props) => {
   return (
     <Ul className={classes.Tabs}>
-      {props.navigation.map(navItem => (
+      {ViewResponseOptions.map(navItem => (
         <li onClick={() => props.change(navItem)} key={navItem}
             className={props.tab === navItem ? "Active" : ""}>{navItem}</li>
       ))}
@@ -47,8 +49,8 @@ const Tabs = (props) => {
 
 const mapStateToProps = state => {
   return {
-    theme: state.theme
-  };
+    tab: state.viewResponseOptionTab
+  }
 }
 
 export default connect(mapStateToProps)(Tabs);

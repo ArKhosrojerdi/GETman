@@ -1,5 +1,4 @@
 import React from "react";
-import {connect} from "react-redux";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -19,10 +18,4 @@ const ComponentHeader = (props) => {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    theme: state.theme
-  };
-}
-
-export default connect(mapStateToProps)(ComponentHeader);
+export default ComponentHeader;
