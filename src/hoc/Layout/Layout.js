@@ -9,8 +9,7 @@ import HomePage from "../../contianers/HomePage/HomePage";
 function Layout(props) {
   return (
     <Aux>
-      <Header {...props}/>
-      {/*<Route path="/" exact component={HomePage}/>*/}
+      <Header/>
       <Route path="/" exact>
         <HomePage {...props}/>
       </Route>

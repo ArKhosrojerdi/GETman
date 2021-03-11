@@ -13,7 +13,8 @@ const initialState = {
     time: 0
   },
   parameters: [
-    {id: 0, key: "", value: "", check: false},
+    {id: 0, key: "salam", value: "are", check: true},
+    {id: 1, key: "bye", value: "khubam", check: true},
   ],
 }
 
@@ -53,7 +54,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.REMOVE_PARAMETER:
       return {
         ...state,
-        parameters: state.parameters.filter(param => param.id !== action.id)
+        parameters: state.parameters.filter(param => param.id !== action.id),
       }
     case actionTypes.CHANGE_PARAMETER_KEY:
       for (let i = 0; i < state.parameters.length; i++) {
@@ -102,10 +103,15 @@ const reducer = (state = initialState, action) => {
         ...state,
         viewResponseOptionTab: action.val
       }
-    case actionTypes.UPDATE_IS_LOADING:
+    case actionTypes.UPDATE_RESPONSE_IS_LOADING:
       return {
         ...state,
         isLoading: action.val
+      }
+    case actionTypes.SET_PARAMS:
+      return {
+        ...state,
+        parameters: action.payload
       }
     default:
       return state;

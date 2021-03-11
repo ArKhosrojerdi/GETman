@@ -21,7 +21,7 @@ const H2 = styled.h4`
 
 const loading = () => {
   return (
-    <H2><FontAwesomeIcon size={40} icon={faSpinner}/></H2>
+    <H2><FontAwesomeIcon icon={faSpinner}/></H2>
   )
 }
 

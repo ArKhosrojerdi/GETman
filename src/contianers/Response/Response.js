@@ -16,11 +16,10 @@ const Div = styled.div`
 `;
 
 const Main = styled.main`
-  background-color: ${props => props.theme.bg2};
+  background-color: ${props => props.theme.mainBg};
  
     & > div {
       background-color: ${props => props.theme.bg2};
-      width: 100%;
     }
 
     & li {
@@ -30,6 +29,10 @@ const Main = styled.main`
     & p {
       background-color: ${props => props.theme.bg1};
     }
+`;
+
+const ResponseBody = styled.div`
+  border: 2px solid ${props => props.theme.border};
 `;
 
 class Response extends React.Component {
@@ -184,22 +187,22 @@ class Response extends React.Component {
     synHighlighted = synHighlighted.split("\n");
     element = this.printObj(synHighlighted, element);
 
-    // if (this.props.used) {
     if (this.props.viewResponseOptionTab === "preview") {
       response = (
-        // <div>
-        <p className={classes.Preview}>{JSON.stringify(this.props.response.data)}</p>
-        // </div>
+        <ResponseBody className={classes.Body}>
+          <p className={classes.Preview}>{JSON.stringify(this.props.response.data)}</p>
+        </ResponseBody>
       )
     } else {
       response = (
-        <ol className={classes.Response}
-            style={this.props.viewResponseOptionTab === "raw" ? {listStyle: "none", padding: 0} : {}}>
-          {element}
-        </ol>
+        <ResponseBody className={classes.Body}>
+          <ol className={classes.Response}
+              style={this.props.viewResponseOptionTab === "raw" ? {listStyle: "none", padding: 0} : {}}>
+            {element}
+          </ol>
+        </ResponseBody>
       );
     }
-    // }
 
     return (
       <Div className={classes.ResponseBox}>

@@ -10,11 +10,17 @@
 }
 
 .ResponseBox .Main {
+  border-top: none;
+  padding: .75rem;
+  position: relative;
+  z-index: 99;
+}
+
+.ResponseBox .Main .Body {
   max-height: 300px;
   min-width: 2rem;
   overflow-y: auto;
-  border-top: none;
-  margin: .75rem;
+  padding: .0625rem;
 }
 
 .Main p {
@@ -87,10 +93,6 @@
 }
 
 @media only screen and (max-width: 575.98px) {
-  .Response {
-    padding-left: 1.0625rem;
-  }
-  
   .Response .Item {
     display: block;
   }
@@ -106,5 +108,9 @@
   .Preview {
     font-size: 12px;
     line-height: 20px;
+  }
+  
+  .ResponseBox .Main {
+    padding: .5rem;
   }
 }

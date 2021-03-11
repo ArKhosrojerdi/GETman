@@ -1,8 +1,7 @@
 .AddressBar {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 3.5rem;
   padding: .5rem;
   box-sizing: border-box;
@@ -19,7 +18,7 @@
   -moz-appearance: none;
   border-radius: 0;
   background-color: transparent;
-  width: 4rem !important;
+  width: 4.5rem;
   box-sizing: border-box;
 }
 
@@ -48,14 +47,12 @@
   outline: none;
   color: #43a047;
   height: 100%;
-  width: 4rem !important;
+  width: 4.5rem;
   border: 1px solid #43a047;
-  box-sizing: border-box;
-  padding: 0 .75rem;
+  padding: 0 .5rem;
   background-color: transparent;
   text-transform: uppercase;
   margin-left: .5rem;
-  
 }
 
 .AddressBar button:hover {
@@ -97,7 +94,7 @@
   }
   
   .AddressBar button {
-    width: 100%;
+    width: 100% !important;
   }
   
   .AddressBar select,

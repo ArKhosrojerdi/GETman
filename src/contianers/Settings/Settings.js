@@ -1,7 +1,6 @@
 import React from "react";
 
 import classes from "./Settings.css";
-import Aux from "../../hoc/Aux/Aux";
 import {connect} from "react-redux";
 import Header from "../../components/Settings/Header";
 import styled from "styled-components";
@@ -41,7 +40,7 @@ class Settings extends React.Component {
   changeIndentHandler = (e) => {
     let value = parseInt(e.target.value, 10);
     if (typeof value !== "number") {
-      return;
+
     } else {
       value = parseInt(e.target.value, 10);
       if (isNaN(value)) {
@@ -67,44 +66,40 @@ class Settings extends React.Component {
   }
 
   render() {
-    console.log();
-
     return (
-      <Aux>
-        <Div className={classes.Settings}>
-          <Header
-            save={this.changeTheme}
-            showSave={this.state.indent !== this.props.indent || this.state.theme !== this.props.theme}
-          />
-          <div className={classes.Body}>
-            <div className={classes.Row}>
-              <div className={classes.Indent}>
-                <label htmlFor="indent">Indent:</label>
-                <input
-                  id="indent"
-                  type="text"
-                  onChange={(event) => this.changeIndentHandler(event)}
-                  value={this.state.indent}
-                  onBlur={this.fixEmptyValueForInput}/>
-              </div>
+      <Div className={classes.Settings}>
+        <Header
+          save={this.changeTheme}
+          showSave={this.state.indent !== this.props.indent || this.state.theme !== this.props.theme}
+        />
+        <div className={classes.Body}>
+          <div className={classes.Row}>
+            <div className={classes.Indent}>
+              <label htmlFor="indent">Indent:</label>
+              <input
+                id="indent"
+                type="text"
+                onChange={(event) => this.changeIndentHandler(event)}
+                value={this.state.indent}
+                onBlur={this.fixEmptyValueForInput}/>
+            </div>
 
-              <div className={classes.Theme}>
-                <label htmlFor="theme">Theme:</label>
-                <select id="theme" value={this.state.theme}
-                        onChange={(event) => this.changeThemeHandler(event)}>
-                  {Themes.map((theme, index) => (
-                    <option
-                      key={index}
-                      value={theme}>
-                      {theme}
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <div className={classes.Theme}>
+              <label htmlFor="theme">Theme:</label>
+              <select id="theme" value={this.state.theme}
+                      onChange={(event) => this.changeThemeHandler(event)}>
+                {Themes.map((theme, index) => (
+                  <option
+                    key={index}
+                    value={theme}>
+                    {theme}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
-        </Div>
-      </Aux>
+        </div>
+      </Div>
     );
   }
 }

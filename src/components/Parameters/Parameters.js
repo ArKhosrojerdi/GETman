@@ -10,46 +10,49 @@ import {connect} from "react-redux";
 import styled from "styled-components";
 
 const Div = styled.div`
-    border: 1px solid ${props => props.theme.border};
-    box-shadow: ${props => props.theme.shadowLight};
-    box-sizing: border-box;
-  `;
+  border: 1px solid ${props => props.theme.border};
+  box-shadow: ${props => props.theme.shadowLight};
+`;
 
 const Main = styled.main`
-    th,
-    td {
-      border: 1px solid ${props => props.theme.border};
+  th,
+  td {
+    border: 1px solid ${props => props.theme.border};
+  }
+  
+  th {
+    background-color: ${props => props.theme.bg3};
+    color: ${props => props.theme.text1};
+  }
+  
+  input {
+    background-color: transparent;
+  
+    &:focus {
+      border-color: ${props => props.theme.text2};
     }
     
-    th {
-      background-color: ${props => props.theme.bg3};
-      color: ${props => props.theme.text1};
+    &[type="checkbox"] {
+      text-align: center !important;
     }
+  }
+  
+  .Active td,
+  .Active td input{
+    background-color: ${props => props.theme.bg1};
+    color: ${props => props.theme.text1};
+  }
+  
+  .Inactive td,
+  .Inactive td input {
+    background-color: ${props => props.theme.bg2};
+    color: ${props => props.theme.text2};
+  }
+  
+  @media only screen and (max-width: 575.98px) {
     
-    input {
-      background-color: transparent;
-    
-      &:focus {
-        border-color: ${props => props.theme.text2};
-      }
-      
-      &[type="checkbox"] {
-        text-align: center !important;
-      }
-    }
-    
-    .Active td,
-    .Active td input{
-      background-color: ${props => props.theme.bg1};
-      color: ${props => props.theme.text1};
-    }
-    
-    .Inactive td,
-    .Inactive td input {
-      background-color: ${props => props.theme.bg2};
-      color: ${props => props.theme.text2};
-    }
-  `;
+  }
+`;
 
 const Parameters = (props) => {
   let params = (

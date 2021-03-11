@@ -17,7 +17,7 @@ const Header = (props) => {
   } else if (props.status >= 100) {
     status = (<span className={classes.Teal}>{statusText}</span>)
   } else {
-    status = "";
+    status = null;
   }
 
   return (

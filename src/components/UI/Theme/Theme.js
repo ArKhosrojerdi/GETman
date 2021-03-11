@@ -11,6 +11,7 @@ export const LightTheme = {
   shadowLightIn: "inset 0 1px 2px rgba(60, 60, 60, .4)",
   shadowDark: "0 4px 6px rgba(60, 60, 60, .2)",
   shadowDarkIn: "inset 0 1px 4px rgba(60, 60, 60, .4)",
+  shadowLightInBottom: "inset 0 -8px 8px -9px rgba(60, 60, 60, .3)",
   textShadow: "0 1px 2px rgba(66, 66, 66, .2)"
 }
 
@@ -27,6 +28,7 @@ export const DarkTheme = {
   shadowLightIn: "inset 0 2px 2px rgba(5, 5, 5, .6)",
   shadowDark: "0 4px 6px rgba(5, 5, 5, .5)",
   shadowDarkIn: "inset 0 1px 4px rgba(0, 0, 0, .75)",
+  shadowLightInBottom: "inset 0 -8px 8px -6px rgba(20, 20, 20, .6)",
   textShadow: "0 1px 2px rgba(66, 66, 66, .5)"
 }
 

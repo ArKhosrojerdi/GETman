@@ -12,13 +12,13 @@ import Methods from "../../store/Methods";
 class HomePage extends React.Component {
   sendRequestHandler = (e) => {
     e.preventDefault();
-    this.props.updateIsLoading(true);
+    this.props.updateResponseIsLoading(true);
     const startTime = Date.now();
     if (this.props.method === Methods[0]) {
       axios.get(this.props.URL)
         .then(response => {
           const time = Date.now() - startTime;
-          this.props.updateIsLoading(false);
+          this.props.updateResponseIsLoading(false);
           this.props.updateResponse({
             ...response,
             time: time
@@ -26,7 +26,7 @@ class HomePage extends React.Component {
         })
         .catch(error => {
           const time = Date.now() - startTime;
-          this.props.updateIsLoading(false);
+          this.props.updateResponseIsLoading(false);
           this.props.updateResponse({
             ...error.response,
             time: time
@@ -36,7 +36,7 @@ class HomePage extends React.Component {
       axios.post(this.props.URL)
         .then((response) => {
           const time = Date.now() - startTime;
-          this.props.updateIsLoading(false);
+          this.props.updateResponseIsLoading(false);
           this.props.updateResponse({
             ...response,
             time: time
@@ -44,7 +44,7 @@ class HomePage extends React.Component {
         })
         .catch(error => {
           const time = Date.now() - startTime;
-          this.props.updateIsLoading(false);
+          this.props.updateResponseIsLoading(false);
           this.props.updateResponse({
             ...error.response,
             time: time
@@ -87,6 +87,11 @@ class HomePage extends React.Component {
     this.updateURLHandler();
   }
 
+  changeCheckboxHandler = (id) => {
+    this.props.changeParameterCheck(id);
+    this.updateURLHandler();
+  }
+
   changeParamHandler = (event, id, value) => {
     if (value === 0) {
       this.props.changeParameterKey({id: id, val: event.target.value});
@@ -97,18 +102,12 @@ class HomePage extends React.Component {
     this.updateURLHandler();
   }
 
-  changeCheckboxHandler = (id) => {
-    this.props.changeParameterCheck(id);
-    this.updateURLHandler();
-  }
-
   changeTabHandler = (item) => {
     this.setState({tab: item});
   }
 
   render() {
-    let responseBody;
-    responseBody = (
+    let responseBody = (
       <Response
         change={this.props.updateViewResponseOptionTab}
       />);
@@ -151,7 +150,7 @@ const mapDispatchToProps = dispatch => {
     changeParameterValue: (payload) => dispatch({type: actionTypes.CHANGE_PARAMETER_VALUE, payload: payload}),
     updateResponse: (response) => dispatch({type: actionTypes.UPDATE_RESPONSE, payload: response}),
     updateViewResponseOptionTab: (tab) => dispatch({type: actionTypes.UPDATE_VIEW_RESPONSE_OPTION_TAB, val: tab}),
-    updateIsLoading: (isLoading) => dispatch({type: actionTypes.UPDATE_IS_LOADING, val: isLoading})
+    updateResponseIsLoading: (isLoading) => dispatch({type: actionTypes.UPDATE_RESPONSE_IS_LOADING, val: isLoading})
   }
 }
 

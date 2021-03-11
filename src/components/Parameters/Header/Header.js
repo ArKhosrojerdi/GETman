@@ -28,15 +28,23 @@ const Button = styled.button`
       border: transparent !important;
       background-color: #358b39;
     }
+    
+    @media only screen and (max-width: 575.98px) {
+      text-align: center !important;
+      height: 1.75rem;
+      width: 1.75rem;
+      
+      & svg {
+        text-align: center !important;
+      }
+    }
   `;
 
 const Header = (props) => {
   return (
     <ParametersHeader>
       <h4>Parameters</h4>
-      <h4>
-        <Button onClick={props.add}><FontAwesomeIcon icon={faPlus}/></Button>
-      </h4>
+      <Button onClick={props.add}><FontAwesomeIcon icon={faPlus}/></Button>
     </ParametersHeader>
   )
 }
