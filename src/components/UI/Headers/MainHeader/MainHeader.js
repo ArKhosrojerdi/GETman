@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import Aux from "../../../../hoc/Misc/Aux";
+import Misc from "../../../../hoc/Misc/Misc";
 import classes from "./MainHeader.css";
 import styled from "styled-components";
 
@@ -39,7 +39,7 @@ const MainHeader = (props) => {
   let path = useLocation().pathname;
 
   return (
-    <Aux>
+    <Misc>
       <Header className={classes.Header}>
         <div className={classes.Container}>
           <div className={classes.Logo}>
@@ -61,7 +61,7 @@ const MainHeader = (props) => {
           </div>
         </div>
       </Header>
-    </Aux>
+    </Misc>
   )
 }
 
