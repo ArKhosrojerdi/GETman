@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from "react-router";
 
-import Aux from '../Aux/Aux';
+import Aux from '../Misc/Aux';
 import Header from "../../components/UI/Headers/MainHeader/MainHeader";
 import Settings from "../../contianers/Settings/Settings";
 import HomePage from "../../contianers/HomePage/HomePage";

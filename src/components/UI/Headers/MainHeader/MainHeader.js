@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import Aux from "../../../../hoc/Aux/Aux";
+import Aux from "../../../../hoc/Misc/Aux";
 import classes from "./MainHeader.css";
 import styled from "styled-components";
 
