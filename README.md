@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# GETman (React.js)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Available Scripts
 
-## Available Scripts
+For installing dependencies, in the project directory run:
 
-In the project directory, you can run:
+#### `npm install`
 
-### `npm start`
+Then you can run:
+
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## What is GETman?
 
-### `npm test`
+**GETman** is a web-application similar to the **Postman** for sending **GET** and **POST** requests and display the response to
+the user.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to use?
 
-### `npm run build`
+### Home
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### URL input
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Select request type between **GET** and **POST**, then type your URL that you want to send request at and finally press 
+Send button to send your request.\
+You can type your parameters in URL section. Just enter **?** character before start typing parameters and divide them bu 
+using **&** character.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Parameters
 
-### `npm run eject`
+In this section you can manage your parameters. You can **Add**, **Remove**, **Active**, **Inactive** parameters and
+**Change** parameter's key and their value. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Response
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can see the response status code and time to respond in header section.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+##### Tabs
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can select display method:
+* Pretty: Shows the response colorfully and with indentation.
+* Raw: shows the response colorlessly and with indentation.
+* Preview: shows the response as a plain text
 
-## Learn More
+| ?     | Colorful | Indent
+|-------|----------|--------
+Pretty  | &check;  | &check;
+Raw     | &cross;  | &check;
+Preview | &cross;  | &cross;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Settings
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can modify indent size and theme of the GETman in this page.
+Themes are:
+* Light
+* Dark
 
-### Code Splitting
+-------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I appreciate that if you share your comments and ideas about **GETman** with me ;).\
+My e-mail address: [khosrojerdi.alireza@gmail.com](khosrojerdi.alireza@gmail.com)
