@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import Header from "../../components/Settings/Header";
 import styled from "styled-components";
 import Themes from "../../store/Themes";
+import Dropdown from "../../components/UI/Dropdown/Dropdown";
 
 const Div = styled.div`
   border: 1px solid ${props => props.theme.border};
@@ -15,14 +16,27 @@ const Div = styled.div`
     text-shadow: ${props => props.theme.textShadow};
   }
   
-  input, select {
+  input {
     color: ${props => props.theme.text1};
     background-color: ${props => props.theme.mainBg};
     box-shadow: ${props => props.theme.shadowLight};
     border: 1px solid ${props => props.theme.border};
   } 
   
-  input:focus, select:focus {
+  input:focus {
+    border: 1px solid ${props => props.theme.text2};
+  }
+`;
+
+const DropdownPanel = styled.div`
+  button {
+    color: ${props => props.theme.text1};
+    background-color: ${props => props.theme.mainBg};
+    box-shadow: ${props => props.theme.shadowLight};
+    border: 1px solid ${props => props.theme.border};
+  } 
+  
+  button:focus {
     border: 1px solid ${props => props.theme.text2};
   }
 `;
@@ -51,8 +65,8 @@ class Settings extends React.Component {
     }
   }
 
-  changeThemeHandler = (e) => {
-    this.setState({theme: e.target.value});
+  changeThemeHandler = (index) => {
+    this.setState({theme: Themes[index]});
   }
 
   fixEmptyValueForInput = () => {
@@ -70,8 +84,7 @@ class Settings extends React.Component {
       <Div className={classes.Settings}>
         <Header
           save={this.changeTheme}
-          showSave={this.state.indent !== this.props.indent || this.state.theme !== this.props.theme}
-        />
+          showSave={this.state.indent !== this.props.indent || this.state.theme !== this.props.theme}/>
         <div className={classes.Body}>
           <div className={classes.Row}>
             <div className={classes.Indent}>
@@ -84,19 +97,13 @@ class Settings extends React.Component {
                 onBlur={this.fixEmptyValueForInput}/>
             </div>
 
-            <div className={classes.Theme}>
+            <DropdownPanel className={classes.Theme}>
               <label htmlFor="theme">Theme:</label>
-              <select id="theme" value={this.state.theme}
-                      onChange={(event) => this.changeThemeHandler(event)}>
-                {Themes.map((theme, index) => (
-                  <option
-                    key={index}
-                    value={theme}>
-                    {theme}
-                  </option>
-                ))}
-              </select>
-            </div>
+              <Dropdown
+                button={this.state.theme}
+                changeMethod={this.changeThemeHandler}
+                items={Themes}/>
+            </DropdownPanel>
           </div>
         </div>
       </Div>

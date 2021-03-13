@@ -1,4 +1,5 @@
 import * as actionTypes from "./actions";
+import Method from "./Methods";
 import {updateObject} from "./utility";
 
 const initialState = {
@@ -25,12 +26,15 @@ const saveSetting = (state, action) => {
     theme: action.payload.theme
   });
 };
+
 const changeURL = (state, action) => {
   return updateObject(state, {URL: action.val});
 };
+
 const changeMethod = (state, action) => {
-  return updateObject(state, {method: action.val})
+  return updateObject(state, {method: Method[action.val]})
 };
+
 const addParameter = (state, action) => {
   const newParameters = [...state.parameters];
   const length = newParameters.length;
@@ -43,6 +47,9 @@ const addParameter = (state, action) => {
   };
 
   return updateObject(state, {parameters: state.parameters.concat(newParameter)})
+};
+const setParameters = (state, action) => {
+  return updateObject(state, {parameters: action.payload});
 };
 const removeParameter = (state, action) => {
   let newParameters = [...state.parameters];
@@ -62,6 +69,7 @@ const updateParameters = (state, action) => {
   }
   return updateObject(state, {parameters: newParameters});
 };
+
 const updateResponseTab = (state, action) => {
   return updateObject(state, {viewResponseOptionTab: action.val});
 };
@@ -77,23 +85,26 @@ const updateResponse = (state, action) => {
     }
   });
 };
-const resetParameters = (state, action) => {
-  return updateObject(state, {parameters: action.payload});
-};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SAVE_SETTINGS:
       return saveSetting(state, action);
+
     case actionTypes.CHANGE_URL:
       return changeURL(state, action);
+
     case actionTypes.CHANGE_METHOD:
       return changeMethod(state, action);
+
     case actionTypes.ADD_PARAMETER:
       return addParameter(state, action);
     case actionTypes.REMOVE_PARAMETER:
       return removeParameter(state, action);
+    case actionTypes.SET_PARAMETERS:
+      return setParameters(state, action);
     case actionTypes.UPDATE_PARAMETERS:
+
       return updateParameters(state, action);
     case actionTypes.UPDATE_RESPONSE:
       return updateResponse(state, action);
@@ -101,8 +112,7 @@ const reducer = (state = initialState, action) => {
       return updateResponseTab(state, action);
     case actionTypes.UPDATE_RESPONSE_IS_LOADING:
       return updateResponseIsLoading(state, action);
-    case actionTypes.RESET_PARAMETERS:
-      return resetParameters(state, action);
+
     default:
       return state;
   }

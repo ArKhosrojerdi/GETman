@@ -61,22 +61,10 @@ class HomePage extends React.Component {
     this.props.removeParameter(id);
   }
 
-  changeCheckboxHandler = (id) => {
-    this.props.changeParameterCheck(id);
-  }
-
-  changeParamHandler = (event, id, value) => {
-    const payload = {id: id, val: event.target.value};
-    if (value === 0) {
-      this.props.changeParameterKey(payload);
-    } else {
-      this.props.changeParameterValue(payload);
-    }
-  }
-
   changeTabHandler = (item) => {
     this.setState({tab: item});
   }
+
 
   render() {
     const responseBody = <Response change={this.props.updateViewResponseOptionTab}/>;
@@ -93,7 +81,6 @@ class HomePage extends React.Component {
           change={this.props.updateParameters}
           remove={this.removeParamHandler}
           add={this.addParamHandler}
-          // check={this.changeCheckboxHandler}
         />
         {responseBody}
       </div>

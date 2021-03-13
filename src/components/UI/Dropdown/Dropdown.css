@@ -1,0 +1,39 @@
+.Button {
+  cursor: pointer;
+  outline: none;
+  border-radius: 0;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  text-transform: capitalize;
+}
+
+.Ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  /*top: auto;*/
+  /*left: auto;*/
+  width: 6rem;
+}
+
+.Ul .Li {
+  transition: all .15s ease;
+  padding: .5rem;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .Button {
+    padding: 0;
+  }
+  
+  .Ul {
+    top: 34px;
+    width: 6rem;
+  }
+}

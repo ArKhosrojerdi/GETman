@@ -4,7 +4,7 @@ import classes from "./Parameters.css";
 import Header from "./Header/Header";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTrash} from '@fortawesome/fontawesome-free-solid';
+import {faCheck, faDotCircle, faTrash} from '@fortawesome/fontawesome-free-solid';
 import {faMinus} from '@fortawesome/fontawesome-free-solid';
 import {connect} from "react-redux";
 import styled from "styled-components";
@@ -37,16 +37,41 @@ const Main = styled.main`
     }
   }
   
-  .Active td,
-  .Active td input{
-    background-color: ${props => props.theme.bg1};
-    color: ${props => props.theme.text1};
+  button {
+    color: ${props => props.theme.bg3};
   }
   
-  .Inactive td,
-  .Inactive td input {
-    background-color: ${props => props.theme.bg2};
-    color: ${props => props.theme.text2};
+  .Active {
+    & td, td input {
+      background-color: ${props => props.theme.bg1};
+      color: ${props => props.theme.text1};
+    }
+    
+    & button {
+    color: ${props => props.theme.text1};
+    border: 1px solid ${props => props.theme.text1};
+      
+      &:hover {
+        color: ${props => props.theme.text2};
+      }
+    }
+  }
+  
+  .Inactive {
+    & td, td input {
+      background-color: ${props => props.theme.bg2};
+      color: ${props => props.theme.text2};
+    }
+    
+    & button {
+      color: transparent;
+      border: 1px solid ${props => props.theme.text3};
+      
+      &:hover {
+        color: ${props => props.theme.text3};
+        border: 1px solid ${props => props.theme.text3};
+      }
+    }
   }
   
   @media only screen and (max-width: 575.98px) {
@@ -87,7 +112,7 @@ const Parameters = (props) => {
     <table>
       <thead>
       <tr>
-        <th className={classes.Check}></th>
+        <th><FontAwesomeIcon icon={faDotCircle}/></th>
         <th>Key</th>
         <th>Value</th>
         <th><FontAwesomeIcon icon={faMinus}/></th>
@@ -97,11 +122,10 @@ const Parameters = (props) => {
       {props.parameters.map(param => (
         <tr key={param.id} className={param.check ? "Active" : "Inactive"}>
           <td>
-            <input
-              type="checkbox"
-              // onChange={() => props.check(param.id)} checked={param.check}
-              onChange={() => props.change({val: null, id: param.id, type: "check"})} checked={param.check}
-            />
+            <button className={classes.Check}
+                    onClick={() => props.change({val: null, id: param.id, type: "check"})}>
+              <FontAwesomeIcon icon={faCheck}/>
+            </button>
           </td>
           <td>
             <input
@@ -123,7 +147,6 @@ const Parameters = (props) => {
                       onClick={() => props.remove(param.id)}>
                 <FontAwesomeIcon icon={faTrash}/>
               </button>}
-
           </td>
         </tr>
       ))}

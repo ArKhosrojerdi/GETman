@@ -7,25 +7,6 @@
   box-sizing: border-box;
 }
 
-.AddressBar select {
-  cursor: pointer;
-  outline: none;
-  height: 100%;
-  padding: 0 .5rem;
-  text-align: center;
-  margin-right: .5rem;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 0;
-  background-color: transparent;
-  width: 4.5rem;
-  box-sizing: border-box;
-}
-
-.AddressBar select:focus {
-  outline: none;
-}
-
 .AddressBar .Row {
   display: flex;
   height: 100%;
@@ -42,7 +23,7 @@
   width: 100%;
 }
 
-.AddressBar button {
+.AddressBar button:last-child {
   cursor: pointer;
   outline: none;
   color: #43a047;
@@ -55,7 +36,7 @@
   margin-left: .5rem;
 }
 
-.AddressBar button:hover {
+.AddressBar button:last-child:hover {
   background-color: #43a047;
   color: #ffffff;
 }
@@ -64,7 +45,6 @@
   box-shadow: inset 0 2px 4px rgba(66, 66, 66, .4);
 }
 
-.AddressBar select:hover,
 .AddressBar button:hover {
   transition: all .15s ease;
 }
@@ -89,17 +69,12 @@
     -webkit-appearance: none;
   }
   
-  .AddressBar select {
-    margin-right: .25rem !important;
-  }
-  
   .AddressBar button {
     width: 100% !important;
   }
   
-  .AddressBar select,
   .AddressBar input,
-  .AddressBar button {
+  .AddressBar button:last-child {
     height: 2rem;
     margin-left: auto;
     margin-right: auto;

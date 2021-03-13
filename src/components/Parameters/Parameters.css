@@ -1,7 +1,5 @@
 .Parameters {
   width: 100%;
-  /*border: 1px solid #dfdfdf;*/
-  /*box-shadow: 0 2px 6px -3px rgba(60, 60, 60, .4);*/
   padding: 0;
   box-sizing: border-box;
 }
@@ -27,15 +25,24 @@
 }
 
 .Parameters th {
-  /*background-color: #dfdfdf;*/
-  /*color: #424242;*/
+  height: 2rem;
   padding: .25rem;
   font-size: 14px;
+}
+
+.Parameters th:first-child,
+.Parameters th:last-child {
+  width: 2rem;
 }
 
 .Parameters td {
   outline: none;
   padding: 0;
+}
+
+.Parameters td:first-child {
+  padding: .125rem;
+  width: 2.125rem;
 }
 
 .Parameters input {
@@ -45,7 +52,6 @@
   width: 100%;
   padding: .5rem .75rem;
   box-sizing: border-box;
-  /*background-color: transparent;*/
   border-radius: 0;
   box-shadow: none;
 }
@@ -54,25 +60,18 @@
   cursor: not-allowed;
 }
 
-.Parameters .Active input:focus {
-  /*background-color: #fafafa;*/
-  /*border-color: #757575;*/
-}
-
 .Parameters .Trash {
-  color: #a5a5a5;
-  width: 100%;
-  height: 100%;
-  padding: .25rem;
+  color: #a5a5a5 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: .25rem !important;
+  border: none !important;
+  font-size: 1rem !important;
 }
 
 .Parameters .Trash:hover {
-  transition: all .1s ease;
-  color: red;
-}
-
-.Parameters .Trash svg {
-  font-size: 1rem;
+  transition: all .1s ease !important;
+  color: #f92510 !important;
 }
 
 .Parameters h4 {
@@ -80,8 +79,17 @@
 }
 
 .Parameters .Check {
-  width: 2rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100%;
+  width: 1.5rem;
   text-align: center;
+  border: 1px solid transparent;
+  padding: .25rem;
+  font-size: 12px;
 }
 
 .Parameters button {
@@ -89,13 +97,6 @@
   border: none;
   outline: none;
   cursor: pointer;
-}
-
-.Parameters input[type="checkbox"] {
-  width: 100%;
-  height: .875rem;
-  margin: 0;
-  border-radius: 0;
 }
 
 @media (max-width: 575.98px) {

@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import styled from "styled-components";
 import Methods from "../../store/Methods";
 import * as actionTypes from "../../store/actions";
+import Dropdown from "../UI/Dropdown/Dropdown";
 
 const Form = styled.form`
   border: 1px solid ${props => props.theme.border};
@@ -34,10 +35,9 @@ const Form = styled.form`
     }
   }
   
-  button {
+  & button {
     &:hover {
       box-shadow: ${props => props.theme.shadowLight};
-      
     }
     
     &:hover, &:active, &:focus {
@@ -46,10 +46,21 @@ const Form = styled.form`
   }
 `;
 
+const Div = styled.div`
+  position: relative;
+  width: 6rem;
+  margin-right: .5rem;
+  margin-left: 0;
+  
+  @media only screen and (max-width: 575.98px) {
+    width: 6rem !important;
+  }
+`;
+
 const AddressBar = (props) => {
   function setParameters(urlValue) {
     if (!urlValue.includes("?")) {
-      props.resetParameters([{id: 0, key: "", value: "", check: false}]);
+      props.setParams([{id: 0, key: "", value: "", check: false}]);
       return;
     }
 
@@ -85,24 +96,13 @@ const AddressBar = (props) => {
     props.setParams(params);
   }
 
-  const select = (
-    <select
-      name="method"
-      id="method"
-      onChange={(event) => props.changeMethod(event.target.value)}
-      value={props.method}>
-      {Methods.map(option => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-  )
-
   return (
     <Form className={classes.AddressBar}>
       <div className={classes.Row}>
-        {select}
+        <Dropdown styles={{top: "52px; !important"}}
+                  button={props.method}
+                  changeMethod={props.changeMethod}
+                  items={Methods}/>
         <input type="text" placeholder="http://example.com/api" value={props.URL}
                onChange={(event) => {
                  props.changeURL(event.target.value);
@@ -125,7 +125,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    resetParameters: (parameters) => dispatch({type: actionTypes.RESET_PARAMETERS, payload: parameters})
+    setParams: (parameters) => dispatch({type: actionTypes.SET_PARAMETERS, payload: parameters})
   }
 }
 
