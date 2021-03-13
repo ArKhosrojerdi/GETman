@@ -77,7 +77,7 @@ const updateResponse = (state, action) => {
     }
   });
 };
-const setParams = (state, action) => {
+const resetParameters = (state, action) => {
   return updateObject(state, {parameters: action.payload});
 };
 
@@ -101,8 +101,8 @@ const reducer = (state = initialState, action) => {
       return updateResponseTab(state, action);
     case actionTypes.UPDATE_RESPONSE_IS_LOADING:
       return updateResponseIsLoading(state, action);
-    case actionTypes.SET_PARAMS:
-      return setParams(state, action);
+    case actionTypes.RESET_PARAMETERS:
+      return resetParameters(state, action);
     default:
       return state;
   }

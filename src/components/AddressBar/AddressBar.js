@@ -49,7 +49,7 @@ const Form = styled.form`
 const AddressBar = (props) => {
   function setParameters(urlValue) {
     if (!urlValue.includes("?")) {
-      props.setParams([{id: 0, key: "", value: "", check: false}]);
+      props.resetParameters([{id: 0, key: "", value: "", check: false}]);
       return;
     }
 
@@ -125,7 +125,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setParams: (parameters) => dispatch({type: actionTypes.SET_PARAMS, payload: parameters})
+    resetParameters: (parameters) => dispatch({type: actionTypes.RESET_PARAMETERS, payload: parameters})
   }
 }
 
