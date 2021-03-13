@@ -53,53 +53,25 @@ class HomePage extends React.Component {
     }
   }
 
-  updateURLHandler = () => {
-    let activeParams = this.props.parameters.filter(x => x.check === true);
-
-    let newURL = this.props.URL;
-    if (newURL.includes("?")) {
-      newURL = newURL.slice(0, newURL.indexOf("?"));
-    }
-
-    if (activeParams.length === 0) {
-      this.props.changeURL(newURL);
-      return;
-    }
-
-    newURL += "?";
-    activeParams.forEach((obj, index) => {
-      if (obj.check && index === 0) {
-        newURL += obj.key + "=" + obj.value;
-      } else if (obj.check) {
-        newURL += "&" + obj.key + "=" + obj.value;
-      }
-    });
-    this.props.changeURL(newURL);
-  }
-
   addParamHandler = () => {
     this.props.addParameter();
-    this.updateURLHandler();
   }
 
   removeParamHandler = (id) => {
     this.props.removeParameter(id);
-    this.updateURLHandler();
   }
 
   changeCheckboxHandler = (id) => {
     this.props.changeParameterCheck(id);
-    this.updateURLHandler();
   }
 
   changeParamHandler = (event, id, value) => {
+    const payload = {id: id, val: event.target.value};
     if (value === 0) {
-      this.props.changeParameterKey({id: id, val: event.target.value});
+      this.props.changeParameterKey(payload);
     } else {
-      this.props.changeParameterValue({id: id, val: event.target.value});
+      this.props.changeParameterValue(payload);
     }
-
-    this.updateURLHandler();
   }
 
   changeTabHandler = (item) => {
@@ -107,10 +79,7 @@ class HomePage extends React.Component {
   }
 
   render() {
-    let responseBody = (
-      <Response
-        change={this.props.updateViewResponseOptionTab}
-      />);
+    const responseBody = <Response change={this.props.updateViewResponseOptionTab}/>;
 
     return (
       <div className={classes.RequestPanel}>
@@ -141,7 +110,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeURL: (url) => dispatch({type: actionTypes.CHANGE_URL, val: url}),
     changeMethod: (method) => dispatch({type: actionTypes.CHANGE_METHOD, val: method}),
     addParameter: () => dispatch({type: actionTypes.ADD_PARAMETER}),
     removeParameter: (id) => dispatch({type: actionTypes.REMOVE_PARAMETER, id: id}),

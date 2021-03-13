@@ -38,14 +38,14 @@ const reducer = (state = initialState, action) => {
         method: action.val
       }
     case actionTypes.ADD_PARAMETER:
-      const length = state.parameters.length;
-      const id = state.parameters[length - 1].id + 1
+      const length = newParams.length;
+      const id = newParams[length - 1].id + 1;
       const newParam = {
         id: id,
         key: "",
         value: "",
         check: true
-      }
+      };
 
       return {
         ...state,
@@ -54,7 +54,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.REMOVE_PARAMETER:
       return {
         ...state,
-        parameters: state.parameters.filter(param => param.id !== action.id),
+        parameters: state.parameters.filter(param => param.id !== action.id)
       }
     case actionTypes.CHANGE_PARAMETER_KEY:
       for (let i = 0; i < state.parameters.length; i++) {

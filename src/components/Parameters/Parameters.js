@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import classes from "./Parameters.css";
 import Header from "./Header/Header";
@@ -8,6 +8,7 @@ import {faTrash} from '@fortawesome/fontawesome-free-solid';
 import {faMinus} from '@fortawesome/fontawesome-free-solid';
 import {connect} from "react-redux";
 import styled from "styled-components";
+import * as actionTypes from "../../store/actions";
 
 const Div = styled.div`
   border: 1px solid ${props => props.theme.border};
@@ -55,6 +56,34 @@ const Main = styled.main`
 `;
 
 const Parameters = (props) => {
+  useEffect(() => {
+    updateURL();
+    // eslint-disable-next-line
+  }, [props.parameters]);
+
+  function updateURL() {
+    const activeParams = props.parameters.filter(x => x.check === true);
+
+    // console.log("hi");
+    let newURL = props.URL;
+    if (newURL.includes("?")) newURL = newURL.slice(0, newURL.indexOf("?"));
+
+    if (activeParams.length === 0) {
+      props.changeURL(newURL);
+      return;
+    }
+
+    newURL += "?";
+    activeParams.forEach((obj, index) => {
+      if (obj.check && index === 0) {
+        newURL += obj.key + "=" + obj.value;
+      } else if (obj.check) {
+        newURL += "&" + obj.key + "=" + obj.value;
+      }
+    });
+    props.changeURL(newURL);
+  }
+
   let params = (
     <table>
       <thead>
@@ -113,8 +142,15 @@ const Parameters = (props) => {
 
 const mapStateToProps = state => {
   return {
+    URL: state.URL,
     parameters: state.parameters
   };
 }
 
-export default connect(mapStateToProps)(Parameters);
+const mapDispatchToProps = dispatch => {
+  return {
+    changeURL: (url) => dispatch({type: actionTypes.CHANGE_URL, val: url}),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Parameters);

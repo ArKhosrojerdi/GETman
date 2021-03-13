@@ -125,8 +125,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeParameterKey: (payload) => dispatch({type: actionTypes.CHANGE_PARAMETER_KEY, payload: payload}),
-    changeParameterValue: (payload) => dispatch({type: actionTypes.CHANGE_PARAMETER_VALUE, payload: payload}),
     setParams: (parameters) => dispatch({
       type: actionTypes.SET_PARAMS,
       payload: parameters
