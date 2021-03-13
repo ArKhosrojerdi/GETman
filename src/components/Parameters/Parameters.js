@@ -8,7 +8,6 @@ import {faTrash} from '@fortawesome/fontawesome-free-solid';
 import {faMinus} from '@fortawesome/fontawesome-free-solid';
 import {connect} from "react-redux";
 import styled from "styled-components";
-import * as actionTypes from "../../store/actions";
 
 const Div = styled.div`
   border: 1px solid ${props => props.theme.border};
@@ -100,19 +99,21 @@ const Parameters = (props) => {
           <td>
             <input
               type="checkbox"
-              onChange={() => props.check(param.id)} checked={param.check}/>
+              // onChange={() => props.check(param.id)} checked={param.check}
+              onChange={() => props.change({val: null, id: param.id, type: "check"})} checked={param.check}
+            />
           </td>
           <td>
             <input
               value={param.key}
-              onChange={(event) => props.change(event, param.id, 0)}
+              onChange={(event) => props.change({val: event.target.value, id: param.id, type: "key"})}
               disabled={!param.check}
             />
           </td>
           <td>
             <input
               value={param.value}
-              onChange={(event) => props.change(event, param.id, 1)}
+              onChange={(event) => props.change({val: event.target.value, id: param.id, type: "value"})}
               disabled={!param.check}
             />
           </td>
@@ -147,10 +148,4 @@ const mapStateToProps = state => {
   };
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changeURL: (url) => dispatch({type: actionTypes.CHANGE_URL, val: url}),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Parameters);
+export default connect(mapStateToProps)(Parameters);

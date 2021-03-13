@@ -89,10 +89,12 @@ class HomePage extends React.Component {
           changeMethod={this.props.changeMethod}
           send={this.sendRequestHandler}/>
         <Parameters
-          change={this.changeParamHandler}
+          changeURL={this.props.changeURL}
+          change={this.props.updateParameters}
           remove={this.removeParamHandler}
           add={this.addParamHandler}
-          check={this.changeCheckboxHandler}/>
+          // check={this.changeCheckboxHandler}
+        />
         {responseBody}
       </div>
     )
@@ -110,14 +112,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    changeURL: (url) => dispatch({type: actionTypes.CHANGE_URL, val: url}),
     changeMethod: (method) => dispatch({type: actionTypes.CHANGE_METHOD, val: method}),
     addParameter: () => dispatch({type: actionTypes.ADD_PARAMETER}),
     removeParameter: (id) => dispatch({type: actionTypes.REMOVE_PARAMETER, id: id}),
-    changeParameterCheck: (id) => dispatch({type: actionTypes.CHANGE_PARAMETER_CHECK, id: id}),
-    changeParameterKey: (payload) => dispatch({type: actionTypes.CHANGE_PARAMETER_KEY, payload: payload}),
-    changeParameterValue: (payload) => dispatch({type: actionTypes.CHANGE_PARAMETER_VALUE, payload: payload}),
+    updateParameters: (payload) => dispatch({type: actionTypes.UPDATE_PARAMETERS, payload: payload}),
     updateResponse: (response) => dispatch({type: actionTypes.UPDATE_RESPONSE, payload: response}),
-    updateViewResponseOptionTab: (tab) => dispatch({type: actionTypes.UPDATE_VIEW_RESPONSE_OPTION_TAB, val: tab}),
+    updateViewResponseOptionTab: (tab) => dispatch({type: actionTypes.UPDATE_RESPONSE_TAB, val: tab}),
     updateResponseIsLoading: (isLoading) => dispatch({type: actionTypes.UPDATE_RESPONSE_IS_LOADING, val: isLoading})
   }
 }
