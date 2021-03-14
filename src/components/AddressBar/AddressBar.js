@@ -46,17 +46,6 @@ const Form = styled.form`
   }
 `;
 
-const Div = styled.div`
-  position: relative;
-  width: 6rem;
-  margin-right: .5rem;
-  margin-left: 0;
-  
-  @media only screen and (max-width: 575.98px) {
-    width: 6rem !important;
-  }
-`;
-
 const AddressBar = (props) => {
   function setParameters(urlValue) {
     if (!urlValue.includes("?")) {
@@ -64,7 +53,7 @@ const AddressBar = (props) => {
       return;
     }
 
-    let url = urlValue.split(/\?(.+)/)[1], params = [{id: 0, key: "", value: "", check: true}], pair;
+    let url = urlValue.split(/\?(.+)/)[1], params = [{id: 0, key: "", value: null, check: true}], pair;
     if (urlValue.includes("&") && url) {
       url = url.split("&");
     }
@@ -74,6 +63,7 @@ const AddressBar = (props) => {
       if (url.includes("=")) {
         pair = url.split(/=(.+)/);
         params[0].key = pair[0].replace("=", "");
+        params[0].value = "";
         if (pair.length !== 1) params[0].value = pair[1];
       } else {
         params[0].key = url;
@@ -89,7 +79,7 @@ const AddressBar = (props) => {
             params.push({id: index, key: pair[0], value: pair[1], check: true})
           }
         } else {
-          params.push({id: index, key: param, value: "", check: true})
+          params.push({id: index, key: param, value: null, check: true})
         }
       }
     }
@@ -98,20 +88,20 @@ const AddressBar = (props) => {
 
   return (
     <Form className={classes.AddressBar}>
+      <button type="submit" onClick={(event) => props.send(event)}>
+        Send
+      </button>
       <div className={classes.Row}>
-        <Dropdown styles={{top: "52px; !important"}}
-                  button={props.method}
-                  changeMethod={props.changeMethod}
-                  items={Methods}/>
+        <Dropdown
+          button={props.method}
+          changeMethod={props.changeMethod}
+          items={Methods}/>
         <input type="text" placeholder="http://example.com/api" value={props.URL}
                onChange={(event) => {
                  props.changeURL(event.target.value);
                  setParameters(event.target.value);
                }}/>
       </div>
-      <button type="submit" onClick={(event) => props.send(event)}>
-        Send
-      </button>
     </Form>
   )
 }

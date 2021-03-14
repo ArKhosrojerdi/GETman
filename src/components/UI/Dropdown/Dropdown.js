@@ -3,7 +3,6 @@ import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDown, faAngleUp} from "@fortawesome/fontawesome-free-solid";
 import classes from "./Dropdown.css";
-import Misc from "../../../hoc/Misc/Misc";
 
 const Button = styled.button`
   color: ${props => props.theme.text2};

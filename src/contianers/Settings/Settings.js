@@ -30,7 +30,7 @@ const Div = styled.div`
 
 const DropdownPanel = styled.div`
   button {
-    color: ${props => props.theme.text1};
+    color: ${props => props.theme.text2};
     background-color: ${props => props.theme.mainBg};
     box-shadow: ${props => props.theme.shadowLight};
     border: 1px solid ${props => props.theme.border};

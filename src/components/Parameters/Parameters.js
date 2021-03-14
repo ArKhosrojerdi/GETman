@@ -88,7 +88,6 @@ const Parameters = (props) => {
   function updateURL() {
     const activeParams = props.parameters.filter(x => x.check === true);
 
-    // console.log("hi");
     let newURL = props.URL;
     if (newURL.includes("?")) newURL = newURL.slice(0, newURL.indexOf("?"));
 
@@ -100,9 +99,17 @@ const Parameters = (props) => {
     newURL += "?";
     activeParams.forEach((obj, index) => {
       if (obj.check && index === 0) {
-        newURL += obj.key + "=" + obj.value;
+        if (obj.value !== null) {
+          newURL += obj.key + "=" + obj.value;
+        } else {
+          newURL += obj.key;
+        }
       } else if (obj.check) {
-        newURL += "&" + obj.key + "=" + obj.value;
+        if (obj.value !== null) {
+          newURL += "&" + obj.key + "=" + obj.value;
+        } else {
+          newURL += "&" + obj.key;
+        }
       }
     });
     props.changeURL(newURL);
@@ -136,7 +143,7 @@ const Parameters = (props) => {
           </td>
           <td>
             <input
-              value={param.value}
+              value={param.value === null ? "" : param.value}
               onChange={(event) => props.change({val: event.target.value, id: param.id, type: "value"})}
               disabled={!param.check}
             />

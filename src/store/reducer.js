@@ -15,8 +15,8 @@ const initialState = {
     time: 0
   },
   parameters: [
-    {id: 0, key: "salam", value: "are", check: true},
-    {id: 1, key: "bye", value: "khubam", check: true},
+    {id: 0, key: "salam", value: null, check: false},
+    {id: 1, key: "bye", value: "khubam", check: false},
   ],
 }
 
@@ -42,7 +42,7 @@ const addParameter = (state, action) => {
   const newParameter = {
     id: id,
     key: "",
-    value: "",
+    value: null,
     check: true
   };
 

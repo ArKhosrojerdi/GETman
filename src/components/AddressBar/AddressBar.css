@@ -1,6 +1,6 @@
 .AddressBar {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   height: 3.5rem;
   padding: .5rem;
@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-.AddressBar button:last-child {
+.AddressBar button[type="submit"] {
   cursor: pointer;
   outline: none;
   color: #43a047;
@@ -36,17 +36,14 @@
   margin-left: .5rem;
 }
 
-.AddressBar button:last-child:hover {
+.AddressBar button[type="submit"]:hover {
+  transition: all .15s ease;
   background-color: #43a047;
   color: #ffffff;
 }
 
-.AddressBar button:active {
+.AddressBar button[type="submit"]:active {
   box-shadow: inset 0 2px 4px rgba(66, 66, 66, .4);
-}
-
-.AddressBar button:hover {
-  transition: all .15s ease;
 }
 
 @media only screen and (max-width: 575.98px) {
