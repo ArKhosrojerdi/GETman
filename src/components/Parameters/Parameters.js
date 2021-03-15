@@ -80,10 +80,11 @@ const Main = styled.main`
 `;
 
 const Parameters = (props) => {
+
   useEffect(() => {
     updateURL();
     // eslint-disable-next-line
-  }, [props.parameters]);
+  }, [props.parameters.length]);
 
   function updateURL() {
     const activeParams = props.parameters.filter(x => x.check === true);
