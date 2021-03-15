@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Methods from "../../store/Methods";
 import * as actionTypes from "../../store/actions";
 import Dropdown from "../UI/Dropdown/Dropdown";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleNotch} from "@fortawesome/fontawesome-free-solid";
 
 const Form = styled.form`
   border: 1px solid ${props => props.theme.border};
@@ -88,8 +90,11 @@ const AddressBar = (props) => {
 
   return (
     <Form className={classes.AddressBar}>
-      <button type="submit" onClick={(event) => props.send(event)}>
-        Send
+      <button
+        type="submit"
+        disabled={props.isLoading}
+        onClick={(event) => props.send(event)}>
+        {props.isLoading ? <FontAwesomeIcon icon={faCircleNotch}/> : "save"}
       </button>
       <div className={classes.Row}>
         <Dropdown
@@ -109,7 +114,8 @@ const AddressBar = (props) => {
 const mapStateToProps = state => {
   return {
     URL: state.URL,
-    parameters: state.parameters
+    parameters: state.parameters,
+    isLoading: state.isLoading
   };
 }
 
