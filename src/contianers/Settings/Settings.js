@@ -42,13 +42,12 @@ const DropdownPanel = styled.div`
 `;
 
 class Settings extends React.Component {
-  state = {
-    indent: 4,
-    theme: "light"
-  }
-
-  componentDidMount() {
-    this.setState({indent: this.props.indent, theme: this.props.theme});
+  constructor(props) {
+    super(props);
+    this.state = {
+      indent: props.indent,
+      theme: props.theme
+    }
   }
 
   changeIndentHandler = (e) => {
