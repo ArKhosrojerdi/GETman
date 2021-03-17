@@ -10,7 +10,7 @@ import {withRouter} from 'react-router-dom';
 const Layout = withRouter(props => {
   return (
     <Misc>
-      <Header/>
+      <Header {...props}/>
       <Route path="/settings" children={<Settings {...props}/>}/>
       <Route path="/" exact children={<HomePage {...props}/>}/>
     </Misc>

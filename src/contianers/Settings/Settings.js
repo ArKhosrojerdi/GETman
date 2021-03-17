@@ -14,6 +14,7 @@ const Div = styled.div`
   label {
     color: ${props => props.theme.text1};
     text-shadow: ${props => props.theme.textShadow};
+    transition: all .15s ease;
   }
   
   input {
@@ -21,6 +22,7 @@ const Div = styled.div`
     background-color: ${props => props.theme.mainBg};
     box-shadow: ${props => props.theme.shadowLight};
     border: 1px solid ${props => props.theme.border};
+    transition: all .15s ease;
   } 
   
   input:focus {
@@ -34,6 +36,7 @@ const DropdownPanel = styled.div`
     background-color: ${props => props.theme.mainBg};
     box-shadow: ${props => props.theme.shadowLight};
     border: 1px solid ${props => props.theme.border};
+    transition: all .15s ease;
   } 
   
   button:focus {

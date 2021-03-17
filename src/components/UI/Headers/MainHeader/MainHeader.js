@@ -35,7 +35,12 @@ const Button = styled.button`
   }
 `;
 
-const MainHeader = (props) => {
+const Img = styled.div`
+  background: url("${props => props.theme.id === 0 ? LightLogo : DarkLogo}") no-repeat;
+`;
+
+
+const MainHeader = () => {
   let path = useLocation().pathname;
 
   return (
@@ -43,8 +48,7 @@ const MainHeader = (props) => {
       <Header className={classes.Header}>
         <div className={classes.Container}>
           <div className={classes.Logo}>
-            {props.theme === "light" ? <img src={LightLogo} alt="GETman logo"/> :
-              <img src={DarkLogo} alt="GETman logo"/>}
+            <Img/>
           </div>
           <div className={classes.Links}>
             <NavLink to="/settings" className={classes.Link}>
@@ -67,7 +71,7 @@ const MainHeader = (props) => {
 
 const mapStateToProps = state => {
   return {
-    theme: state.theme
+    // theme: state.theme
   }
 }
 

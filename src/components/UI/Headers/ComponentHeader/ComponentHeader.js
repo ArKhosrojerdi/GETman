@@ -11,6 +11,7 @@ const Header = styled.header`
   padding: .75rem;
   height: 3.5rem;
   box-sizing: border-box;
+  transition: all .15s ease;
   
   & h4 {
     line-height: 2rem;
