@@ -7,7 +7,7 @@ import {ThemeProvider} from "styled-components";
 import GlobalStyle from "./components/UI/Theme/GlobalTheme/GlobalStyle";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   return (
     <ThemeProvider theme={Theme.themes[theme]}>

@@ -94,7 +94,7 @@ const AddressBar = (props) => {
         type="submit"
         disabled={props.isLoading}
         onClick={(event) => props.send(event)}>
-        {props.isLoading ? <FontAwesomeIcon icon={faCircleNotch}/> : "save"}
+        {props.isLoading ? <FontAwesomeIcon icon={faCircleNotch}/> : "send"}
       </button>
       <div className={classes.Row}>
         <Dropdown

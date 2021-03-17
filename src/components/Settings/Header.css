@@ -16,6 +16,38 @@
   background-color: #0d47a1;
 }
 
+.Show {
+  animation: showSave .25s ease forwards;
+}
+
+@keyframes showSave {
+  0% {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(.125rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.Hide {
+  animation: hideSave .25s ease forwards;
+}
+
+@keyframes hideSave {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @media only screen and (max-width: 575.98px) {
   .Header {
     height: 2.5rem;

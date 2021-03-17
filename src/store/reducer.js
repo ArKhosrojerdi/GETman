@@ -7,7 +7,7 @@ const initialState = {
   method: "GET",
   viewResponseOptionTab: "pretty",
   indent: 4,
-  theme: "light",
+  theme: "dark",
   isLoading: false,
   response: {
     data: "",
